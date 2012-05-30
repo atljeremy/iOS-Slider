@@ -10,10 +10,14 @@
 
 #import "ViewController.h"
 
+#import "FirstTopViewController.h"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize firstTopViewController = _firstTopViewController;
+@synthesize slidingViewController = _slidingViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -21,10 +25,13 @@
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+        self.window.rootViewController = self.viewController;
     } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        self.slidingViewController = [[InitialSlidingViewController alloc] initWithNibName:@"InitialSlidingViewController" bundle:nil];
+        self.firstTopViewController = [[FirstTopViewController alloc] initWithNibName:@"FirstTopViewController" bundle:nil];
+        self.slidingViewController.topViewController = self.firstTopViewController;
+        self.window.rootViewController = self.slidingViewController;
     }
-    self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
