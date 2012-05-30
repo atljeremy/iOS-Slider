@@ -74,14 +74,12 @@
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-        //    self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
         self.slidingViewController.underLeftViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     }
     
-//    if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
-//        //    self.slidingViewController.underRightViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRight"];
-//        self.slidingViewController.underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController" bundle:nil];
-//    }
+    if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
+        self.slidingViewController.underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController" bundle:nil];
+    }
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
 }
