@@ -6,8 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-@interface MKMapView_ZoomLevel : NSObject
+@interface MKMapView (ZoomLevel)
+
+- (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate
+                  zoomLevel:(NSUInteger)zoomLevel
+                   animated:(BOOL)animated;
 
 @end

@@ -52,7 +52,7 @@
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">apartment1.jpg</string>
+									<string key="NSResourceName">apartment-rewq.png</string>
 								</object>
 							</object>
 							<object class="IBUIView" id="883775050">
@@ -65,7 +65,6 @@
 										<string key="NSFrame">{{0, 5}, {189, 21}}</string>
 										<reference key="NSSuperview" ref="883775050"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -280,8 +279,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">apartment1.jpg</string>
-			<string key="NS.object.0">{490, 369}</string>
+			<string key="NS.key.0">apartment-rewq.png</string>
+			<string key="NS.object.0">{540, 362}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

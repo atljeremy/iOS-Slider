@@ -284,6 +284,7 @@ NSString *const ECSlidingViewTopDidReset          = @"ECSlidingViewTopDidReset";
 
 - (void)anchorTopViewTo:(ECSide)side animations:(void (^)())animations onComplete:(void (^)())complete
 {
+  self.shouldAllowUserInteractionsWhenAnchored = YES;
   CGFloat newCenter = self.topView.center.x;
   
   if (side == ECLeft) {

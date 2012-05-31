@@ -8,6 +8,7 @@
 
 #import "FirstTopViewController.h"
 #import "MKMapView+ZoomLevel.h"
+#import "MyLocation.h"
 
 @implementation FirstTopViewController
 @synthesize rightSliderImage;
@@ -83,6 +84,10 @@
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    [self.mapView addGestureRecognizer:lpgr];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
@@ -101,6 +106,24 @@
     
     CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
     [mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];
+}
+
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+        return;
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];   
+    CLLocationCoordinate2D touchMapCoordinate = 
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    
+    NSString * description = @"Description";
+    NSString * address = @"Address";
+    
+    //MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
+    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:touchMapCoordinate] ;
+    //annotation.coordinate = touchMapCoordinate;
+    [self.mapView addAnnotation:annotation];
 }
 
 
