@@ -7,8 +7,17 @@
 //
 
 #import "FirstTopViewController.h"
+#import "MKMapView+ZoomLevel.h"
 
 @implementation FirstTopViewController
+@synthesize rightSliderImage;
+@synthesize leftSliderImage;
+@synthesize mapView;
+
+#define GEORGIA_TECH_LATITUDE 33.777328
+#define GEORGIA_TECH_LONGITUDE -84.397348
+
+#define ZOOM_LEVEL 14
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +46,9 @@
 
 - (void)viewDidUnload
 {
+    [self setRightSliderImage:nil];
+    [self setLeftSliderImage:nil];
+    [self setMapView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -47,8 +59,6 @@
     // Return YES for supported orientations
 	return YES;
 }
-
-
 
 
 
@@ -73,6 +83,7 @@
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     
+    
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     }
@@ -82,6 +93,14 @@
     }
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
+    [mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];
 }
 
 

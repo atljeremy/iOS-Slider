@@ -1,5 +1,5 @@
 //
-//  UnderRightViewController.h
+//  ListingTableViewCell.h
 //  SingleViewApp
 //
 //  Created by Jeremy Fox on 5/30/12.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
 
-@interface UnderRightViewController : UIViewController
+@interface ListingTableViewCell : UITableViewCell
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *cellImageView;
 @end

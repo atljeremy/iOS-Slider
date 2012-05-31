@@ -52,35 +52,47 @@
 
 
 
-- (void)awakeFromNib
-{
-    self.menuItems = [NSArray arrayWithObjects:@"First", @"Second", @"Third", @"Navigation", nil];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.slidingViewController setAnchorRightRevealAmount:280.0f];
+    [self.slidingViewController setAnchorRightRevealAmount:300.0f];
     self.slidingViewController.underLeftWidthLayout = ECFullWidth;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return self.menuItems.count;
+    //return self.menuItems.count;
+    return 25;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"MenuItemCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    ListingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if(!cell){
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ListingTableViewCell" owner:nil options:nil];
+        for(id currentObject in topLevelObjects) {
+            if([currentObject isKindOfClass:[ListingTableViewCell class]]) {
+                cell = (ListingTableViewCell *)currentObject;
+                [cell.cellImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+                [cell.cellImageView.layer setBorderWidth: 6.0];
+                [cell.cellImageView.layer setShadowColor:[UIColor blackColor].CGColor];
+                [cell.cellImageView.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
+                [cell.cellImageView.layer setShadowRadius:3.0];
+                [cell.cellImageView.layer setShadowOpacity:0.5];
+                break;
+            }
+        }
     }
     
-    cell.textLabel.text = [self.menuItems objectAtIndex:indexPath.row];
-    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 175;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

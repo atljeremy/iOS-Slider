@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
+#import "ListingTableViewCell.h"
 
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

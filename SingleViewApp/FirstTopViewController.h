@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <MapKit/MapKit.h>
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "UnderRightViewController.h"
@@ -16,5 +17,8 @@
 
 - (IBAction)revealMenu:(id)sender;
 - (IBAction)revealUnderRight:(id)sender;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rightSliderImage;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *leftSliderImage;
+@property (unsafe_unretained, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
