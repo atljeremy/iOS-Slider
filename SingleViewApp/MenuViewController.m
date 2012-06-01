@@ -7,13 +7,24 @@
 //
 
 #import "MenuViewController.h"
+#import "MKMapView+ZoomLevel.h"
+#import "MyLocation.h"
+
+#define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
+#define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
+#define SET_RIGHT_ANCHOR_FOR_AVAILABILITY 985.0f
+#define GEORGIA_TECH_LATITUDE 33.777328
+#define GEORGIA_TECH_LONGITUDE -84.397348
+#define ZOOM_LEVEL 15
 
 @interface MenuViewController()
 @property (nonatomic, strong) NSArray *menuItems;
+- (void)showDetails;
+- (void)showLeadForm;
 @end
 
 @implementation MenuViewController
-@synthesize menuItems;
+@synthesize propertyMap, detailsScrollView, detailsPhoto, menuItems, menuDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +47,9 @@
 
 - (void)viewDidUnload
 {
+    [self setDetailsPhoto:nil];
+    [self setDetailsScrollView:nil];
+    [self setPropertyMap:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -56,7 +70,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.slidingViewController setAnchorRightRevealAmount:300.0f];
+    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_LISTINGS];
     self.slidingViewController.underLeftWidthLayout = ECFullWidth;
 }
 
@@ -97,17 +111,45 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //  NSString *identifier = [NSString stringWithFormat:@"%@Top", [self.menuItems objectAtIndex:indexPath.row]];
-    //
-    //  UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-    //  
-    //  [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
-    //    CGRect frame = self.slidingViewController.topViewController.view.frame;
-    //    self.slidingViewController.topViewController = newTopViewController;
-    //    self.slidingViewController.topViewController.view.frame = frame;
-    //    [self.slidingViewController resetTopView];
-    //  }];
+    [self showDetails];
 }
 
+- (void)showDetails
+{
+    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
+    [self.slidingViewController anchorTopViewTo:ECRight];
+    
+    self.detailsScrollView.contentSize = CGSizeMake(350, 1000);
+    
+    [self.detailsPhoto.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+    [self.detailsPhoto.layer setBorderWidth: 6.0];
+    [self.detailsPhoto.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.detailsPhoto.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
+    [self.detailsPhoto.layer setShadowRadius:3.0];
+    [self.detailsPhoto.layer setShadowOpacity:0.5];
+    
+    CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
+    [self.propertyMap setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];
+    
+    CLLocationCoordinate2D propertyCoordinate = CLLocationCoordinate2DMake(GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE);
+    
+    NSString * description = @"Description";
+    NSString * address = @"Address";
+    
+    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:propertyCoordinate] ;
+    [self.propertyMap addAnnotation:annotation];
+    
+    [menuDelegate zoomMapToSelectedPropertyLocation:propertyCoordinate];
+}
+
+- (void)showLeadForm
+{
+    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_AVAILABILITY];
+    [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+- (IBAction)checkAvailability:(id)sender {
+    [self showLeadForm];
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "FirstTopViewController.h"
+#import "MenuViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
 
@@ -43,6 +44,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
 }
 
 - (void)viewDidUnload
@@ -89,8 +91,12 @@
     lpgr.minimumPressDuration = 2.0; //user needs to press for 2 seconds
     [self.mapView addGestureRecognizer:lpgr];
     
+    MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    
+    menuViewController.menuDelegate = self;
+    
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-        self.slidingViewController.underLeftViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        self.slidingViewController.underLeftViewController = menuViewController;
     }
     
     if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
@@ -119,10 +125,8 @@
     
     NSString * description = @"Description";
     NSString * address = @"Address";
-    
-    //MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
+
     MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:touchMapCoordinate] ;
-    //annotation.coordinate = touchMapCoordinate;
     [self.mapView addAnnotation:annotation];
 }
 
