@@ -10,19 +10,15 @@
 #import <MapKit/MapKit.h>
 #import "ECSlidingViewController.h"
 #import "ListingTableViewCell.h"
+#import "MenuViewControllerDelegate.h"
 
-@protocol MenuViewControllerDelegate;
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, MKMapViewDelegate>
 
 @property (assign) id<MenuViewControllerDelegate> menuDelegate;
 @property (unsafe_unretained, nonatomic) IBOutlet UIScrollView *detailsScrollView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *detailsPhoto;
 @property (unsafe_unretained, nonatomic) IBOutlet MKMapView *propertyMap;
 - (IBAction)checkAvailability:(id)sender;
-@end
-
-@protocol MenuViewControllerDelegate <NSObject>
-
--(void)zoomMapToSelectedPropertyLocation:(CLLocationCoordinate2D)location;
-
+@property (unsafe_unretained, nonatomic) IBOutlet UITextView *descTextView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *descTitleView;
 @end

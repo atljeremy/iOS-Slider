@@ -13,6 +13,9 @@
 #define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
 #define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
 #define SET_RIGHT_ANCHOR_FOR_AVAILABILITY 985.0f
+#define SET_MAPVIEW_WIDTH_FOR_LISTINGS 724
+#define SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS 374
+#define SET_MAPVIEW_WIDTH_FULL 1024
 #define GEORGIA_TECH_LATITUDE 33.777328
 #define GEORGIA_TECH_LONGITUDE -84.397348
 #define ZOOM_LEVEL 15
@@ -24,6 +27,8 @@
 @end
 
 @implementation MenuViewController
+@synthesize descTextView;
+@synthesize descTitleView;
 @synthesize propertyMap, detailsScrollView, detailsPhoto, menuItems, menuDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,6 +36,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -50,6 +56,8 @@
     [self setDetailsPhoto:nil];
     [self setDetailsScrollView:nil];
     [self setPropertyMap:nil];
+    [self setDescTextView:nil];
+    [self setDescTitleView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -60,12 +68,6 @@
     // Return YES for supported orientations
 	return YES;
 }
-
-
-
-
-
-
 
 - (void)viewDidLoad
 {
@@ -90,12 +92,20 @@
         for(id currentObject in topLevelObjects) {
             if([currentObject isKindOfClass:[ListingTableViewCell class]]) {
                 cell = (ListingTableViewCell *)currentObject;
+                
+                NSArray *array = [[NSBundle mainBundle] pathsForResourcesOfType:@".png" inDirectory:@"/."];
+                NSString *randomPath = [array objectAtIndex:arc4random() % [array count]];
+                NSLog(@"%@", randomPath);
+                UIImage *propPhoto = [[UIImage alloc] initWithContentsOfFile:randomPath];
+                
+                cell.cellImageView.image = propPhoto;
                 [cell.cellImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
                 [cell.cellImageView.layer setBorderWidth: 6.0];
                 [cell.cellImageView.layer setShadowColor:[UIColor blackColor].CGColor];
                 [cell.cellImageView.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
                 [cell.cellImageView.layer setShadowRadius:3.0];
                 [cell.cellImageView.layer setShadowOpacity:0.5];
+                
                 break;
             }
         }
@@ -136,10 +146,11 @@
     NSString * description = @"Description";
     NSString * address = @"Address";
     
-    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:propertyCoordinate] ;
+    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:propertyCoordinate];
     [self.propertyMap addAnnotation:annotation];
     
     [menuDelegate zoomMapToSelectedPropertyLocation:propertyCoordinate];
+    [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS];
 }
 
 - (void)showLeadForm
@@ -150,6 +161,33 @@
 
 - (IBAction)checkAvailability:(id)sender {
     [self showLeadForm];
+    [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FULL];
+}
+
+#pragma mark MKMapView delegate
+- (MKAnnotationView *)mapView:(MKMapView *)mapview viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
+    MKAnnotationView *annotationView = [self.propertyMap dequeueReusableAnnotationViewWithIdentifier:AnnotationIdentifier];
+    if(annotationView)
+        return annotationView;
+    else
+    {
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                         reuseIdentifier:AnnotationIdentifier];
+        annotationView.canShowCallout = YES;
+        annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"map-pin.png"]];
+        UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton addTarget:self action:@selector(writeSomething:) forControlEvents:UIControlEventTouchUpInside];
+        [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+        annotationView.rightCalloutAccessoryView = rightButton;
+        annotationView.canShowCallout = YES;
+        annotationView.draggable = YES;
+        return annotationView;
+    }
+    return nil;
 }
 
 @end

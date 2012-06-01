@@ -11,11 +11,14 @@
 #import <MapKit/MapKit.h>
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
+#import "MenuViewControllerDelegate.h"
 #import "UnderRightViewController.h"
 
-@interface FirstTopViewController : UIViewController
+@interface FirstTopViewController : UIViewController <MenuViewControllerDelegate, MKMapViewDelegate>
 
+- (void)setPinAtLocation:(CLLocationCoordinate2D)location withDescription:(NSString *)desc andAddress:(NSString *)address;
 - (IBAction)revealMenu:(id)sender;
+- (void)revealMenuAndShowDetails;
 - (IBAction)revealUnderRight:(id)sender;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rightSliderImage;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *leftSliderImage;

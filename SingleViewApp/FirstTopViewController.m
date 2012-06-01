@@ -11,6 +11,10 @@
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
 
+#define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
+#define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
+#define SET_RIGHT_ANCHOR_FOR_AVAILABILITY 985.0f
+
 @implementation FirstTopViewController
 @synthesize rightSliderImage;
 @synthesize leftSliderImage;
@@ -71,6 +75,12 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
+- (void)revealMenuAndShowDetails
+{
+    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
+    [self revealMenu:nil];
+}
+
 - (IBAction)revealUnderRight:(id)sender
 {
     [self.slidingViewController anchorTopViewTo:ECLeft];
@@ -92,7 +102,6 @@
     [self.mapView addGestureRecognizer:lpgr];
     
     MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    
     menuViewController.menuDelegate = self;
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
@@ -102,6 +111,12 @@
     if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
         self.slidingViewController.underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController" bundle:nil];
     }
+    
+    CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
+    NSString * description = @"Description";
+    NSString * address = @"Address";
+    
+    [self setPinAtLocation:centerCoord withDescription:description andAddress:address];
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
 }
@@ -120,15 +135,56 @@
         return;
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];   
-    CLLocationCoordinate2D touchMapCoordinate = 
-    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
     NSString * description = @"Description";
     NSString * address = @"Address";
+    
+    [self setPinAtLocation:touchMapCoordinate withDescription:description andAddress:address];
+}
 
-    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:touchMapCoordinate] ;
+- (void)zoomMapToSelectedPropertyLocation:(CLLocationCoordinate2D)location
+{
+    [mapView setCenterCoordinate:location zoomLevel:ZOOM_LEVEL animated:YES];
+}
+
+- (void)updateMapViewWidthTo:(int)width
+{
+    CGRect f = mapView.frame;
+    f.size.width = width;
+    mapView.frame = f;
+}
+
+- (void)setPinAtLocation:(CLLocationCoordinate2D)location withDescription:(NSString *)desc andAddress:(NSString *)address
+{
+    MyLocation *annotation = [[MyLocation alloc] initWithName:desc address:address coordinate:location] ;
     [self.mapView addAnnotation:annotation];
 }
 
+#pragma mark MKMapView delegate
+- (MKAnnotationView *)mapView:(MKMapView *)mapview viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
+    MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationIdentifier];
+    if(annotationView)
+        return annotationView;
+    else
+    {
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                        reuseIdentifier:AnnotationIdentifier];
+        annotationView.canShowCallout = YES;
+        annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"map-pin.png"]];
+        UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton addTarget:self action:@selector(revealMenuAndShowDetails) forControlEvents:UIControlEventTouchUpInside];
+        [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+        annotationView.rightCalloutAccessoryView = rightButton;
+        annotationView.canShowCallout = YES;
+        annotationView.draggable = YES;
+        return annotationView;
+    }
+    return nil;
+}
 
 @end
