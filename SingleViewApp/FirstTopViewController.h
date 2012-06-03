@@ -20,6 +20,8 @@
 - (IBAction)revealMenu:(id)sender;
 - (void)revealMenuAndShowDetails;
 - (IBAction)revealUnderRight:(id)sender;
+@property (nonatomic, strong) MenuViewController *menuViewController;
+@property (nonatomic, strong) UnderRightViewController *underRightViewController;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rightSliderImage;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *leftSliderImage;
 @property (unsafe_unretained, nonatomic) IBOutlet MKMapView *mapView;

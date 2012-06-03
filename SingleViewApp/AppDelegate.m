@@ -24,11 +24,13 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-        self.window.rootViewController = self.viewController;
+        self.slidingViewController = [[InitialSlidingViewController alloc] initWithNibName:@"InitialSlidingViewController_iPhone" bundle:nil];
+        self.firstTopViewController = [[FirstTopViewController alloc] initWithNibName:@"FirstTopViewController_iPhone" bundle:nil];
+        self.slidingViewController.topViewController = self.firstTopViewController;
+        self.window.rootViewController = self.slidingViewController;
     } else {
-        self.slidingViewController = [[InitialSlidingViewController alloc] initWithNibName:@"InitialSlidingViewController" bundle:nil];
-        self.firstTopViewController = [[FirstTopViewController alloc] initWithNibName:@"FirstTopViewController" bundle:nil];
+        self.slidingViewController = [[InitialSlidingViewController alloc] initWithNibName:@"InitialSlidingViewController_iPad" bundle:nil];
+        self.firstTopViewController = [[FirstTopViewController alloc] initWithNibName:@"FirstTopViewController_iPad" bundle:nil];
         self.slidingViewController.topViewController = self.firstTopViewController;
         self.window.rootViewController = self.slidingViewController;
     }

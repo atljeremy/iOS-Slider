@@ -67,7 +67,7 @@ enum
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.peekLeftAmount = 100.0f;
+    self.peekLeftAmount = 50.0f;
     [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
     self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
     
@@ -77,9 +77,15 @@ enum
 	self.gridView.delegate = self;
 	self.gridView.dataSource = self;
     
-    ImageDemoCellChooser * chooser = [[ImageDemoCellChooser alloc] initWithItemTitles: [NSArray arrayWithObjects: NSLocalizedString(@"Plain", @""), NSLocalizedString(@"Filled", @""), nil]];
-    chooser.delegate = self;
-    _menuPopoverController = [[UIPopoverController alloc] initWithContentViewController: chooser];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        // Nothing for now
+    } else {
+        ImageDemoCellChooser * chooser = [[ImageDemoCellChooser alloc] initWithItemTitles: [NSArray arrayWithObjects: NSLocalizedString(@"Plain", @""), NSLocalizedString(@"Filled", @""), nil]];
+        chooser.delegate = self;
+        _menuPopoverController = [[UIPopoverController alloc] initWithContentViewController: chooser];
+    }
+    
     
     if ( _orderedImageNames != nil )
         return;

@@ -19,6 +19,7 @@
 @synthesize rightSliderImage;
 @synthesize leftSliderImage;
 @synthesize mapView;
+@synthesize menuViewController, underRightViewController;
 
 #define GEORGIA_TECH_LATITUDE 33.777328
 #define GEORGIA_TECH_LONGITUDE -84.397348
@@ -101,7 +102,15 @@
     lpgr.minimumPressDuration = 2.0; //user needs to press for 2 seconds
     [self.mapView addGestureRecognizer:lpgr];
     
-    MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPhone" bundle:nil];
+        underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController_iPhone" bundle:nil];
+    } else {
+        menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPad" bundle:nil];
+        underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController_iPad" bundle:nil];
+    }
+    
     menuViewController.menuDelegate = self;
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
@@ -109,7 +118,7 @@
     }
     
     if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
-        self.slidingViewController.underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController" bundle:nil];
+        self.slidingViewController.underRightViewController = underRightViewController;
     }
     
     CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
