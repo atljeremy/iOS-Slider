@@ -25,12 +25,16 @@ enum
 @implementation UnderRightViewController
 @synthesize peekLeftAmount;
 @synthesize gridView=_gridView;
+@synthesize leadForm;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        leadForm = [[UIView alloc] init];
+        leadForm.alpha = 0.0f;
     }
     return self;
 }
@@ -45,8 +49,13 @@ enum
 
 #pragma mark - View lifecycle
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidUnload
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ToggleLeadForm" object:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -60,13 +69,12 @@ enum
 	return YES;
 }
 
-
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleLeadForm:) name:@"ToggleLeadForm" object:nil];
+    
     self.peekLeftAmount = 50.0f;
     [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
     self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
@@ -293,6 +301,23 @@ enum
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
     return ( CGSizeMake(224.0, 168.0) );
+}
+
+- (void)toggleLeadForm:(NSNotification*)notification {
+    BOOL detailsShown = [[[notification userInfo] valueForKey:@"detailsShown"] boolValue];
+    
+    if (detailsShown) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _gridView.alpha = 0.0;
+            leadForm.alpha = 1.0;
+        }];
+    }
+    else {
+        [UIView animateWithDuration:0.25 animations:^{
+            _gridView.alpha = 1.0;
+            leadForm.alpha = 0.0;
+        }];
+    }
 }
 
 @end

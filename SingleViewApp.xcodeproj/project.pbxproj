@@ -45,6 +45,8 @@
 		1A56028115793FCF007A9C11 /* apartment-rtey.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A56026415793FCF007A9C11 /* apartment-rtey.png */; };
 		1A56028215793FCF007A9C11 /* apartment-test.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A56026515793FCF007A9C11 /* apartment-test.png */; };
 		1A56028315793FCF007A9C11 /* apartment_asdf.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A56026615793FCF007A9C11 /* apartment_asdf.png */; };
+		1A63CAA7157D548400E8F82D /* PropertyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CAA5157D548400E8F82D /* PropertyDetailsViewController.m */; };
+		1A63CAA8157D548400E8F82D /* PropertyDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A63CAA6157D548400E8F82D /* PropertyDetailsViewController.xib */; };
 		1A72C296157664360013DA35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A72C295157664360013DA35 /* UIKit.framework */; };
 		1A72C298157664360013DA35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A72C297157664360013DA35 /* Foundation.framework */; };
 		1A72C29A157664360013DA35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A72C299157664360013DA35 /* CoreGraphics.framework */; };
@@ -67,6 +69,10 @@
 		1A72C2E91576BA120013DA35 /* NavigationTopViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2E71576BA120013DA35 /* NavigationTopViewController_iPad.xib */; };
 		1A72C2ED1576BD5F0013DA35 /* SecondTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2EB1576BD5D0013DA35 /* SecondTopViewController.m */; };
 		1A72C2EE1576BD5F0013DA35 /* SecondTopViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2EC1576BD5E0013DA35 /* SecondTopViewController_iPad.xib */; };
+		1A7B573E157CE9BD00D8A465 /* GCDiscreetNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B573D157CE9BD00D8A465 /* GCDiscreetNotificationView.m */; };
+		1ABA08E8157D369A00D4C22B /* PropertyDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABA08E7157D369A00D4C22B /* PropertyDetailsView.m */; };
+		1ABA08EC157D3C2700D4C22B /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABA08EA157D3C2700D4C22B /* MainMapViewController.m */; };
+		1ABA08ED157D3C2700D4C22B /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABA08EB157D3C2700D4C22B /* MainMapViewController.xib */; };
 		3F5C3A5E1576F69B00C0B420 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C3A5B1576F69B00C0B420 /* ECSlidingViewController.m */; };
 		3F5C3A5F1576F69B00C0B420 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C3A5D1576F69B00C0B420 /* UIImage+ImageWithUIView.m */; };
 		3F5C3A62157704D100C0B420 /* ListingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C3A61157704D100C0B420 /* ListingTableViewCell.m */; };
@@ -137,6 +143,9 @@
 		1A56026415793FCF007A9C11 /* apartment-rtey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apartment-rtey.png"; sourceTree = "<group>"; };
 		1A56026515793FCF007A9C11 /* apartment-test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apartment-test.png"; sourceTree = "<group>"; };
 		1A56026615793FCF007A9C11 /* apartment_asdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apartment_asdf.png; sourceTree = "<group>"; };
+		1A63CAA4157D548400E8F82D /* PropertyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyDetailsViewController.h; sourceTree = "<group>"; };
+		1A63CAA5157D548400E8F82D /* PropertyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDetailsViewController.m; sourceTree = "<group>"; };
+		1A63CAA6157D548400E8F82D /* PropertyDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyDetailsViewController.xib; sourceTree = "<group>"; };
 		1A72C291157664360013DA35 /* SingleViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingleViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A72C295157664360013DA35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1A72C297157664360013DA35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -171,6 +180,14 @@
 		1A72C2EA1576BD5D0013DA35 /* SecondTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTopViewController.h; sourceTree = "<group>"; };
 		1A72C2EB1576BD5D0013DA35 /* SecondTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTopViewController.m; sourceTree = "<group>"; };
 		1A72C2EC1576BD5E0013DA35 /* SecondTopViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondTopViewController_iPad.xib; sourceTree = "<group>"; };
+		1A7B573C157CE9BD00D8A465 /* GCDiscreetNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDiscreetNotificationView.h; sourceTree = "<group>"; };
+		1A7B573D157CE9BD00D8A465 /* GCDiscreetNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDiscreetNotificationView.m; sourceTree = "<group>"; };
+		1A7B5740157CEA2E00D8A465 /* DiscreteNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscreteNotifications.h; sourceTree = "<group>"; };
+		1ABA08E6157D369A00D4C22B /* PropertyDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyDetailsView.h; sourceTree = "<group>"; };
+		1ABA08E7157D369A00D4C22B /* PropertyDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDetailsView.m; sourceTree = "<group>"; };
+		1ABA08E9157D3C2700D4C22B /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMapViewController.h; sourceTree = "<group>"; };
+		1ABA08EA157D3C2700D4C22B /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
+		1ABA08EB157D3C2700D4C22B /* MainMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMapViewController.xib; sourceTree = "<group>"; };
 		3F5C3A5A1576F69B00C0B420 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
 		3F5C3A5B1576F69B00C0B420 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		3F5C3A5C1576F69B00C0B420 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
@@ -285,6 +302,7 @@
 				1A54E0A61577F67700BB9D5D /* MyLocation.h */,
 				1A54E0A71577F67700BB9D5D /* MyLocation.m */,
 				1A56020C157929DC007A9C11 /* MenuViewControllerDelegate.h */,
+				1A7B5740157CEA2E00D8A465 /* DiscreteNotifications.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -367,6 +385,7 @@
 		1A72C294157664360013DA35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A7B573B157CE9BD00D8A465 /* GCDiscreetNotificationView */,
 				3FFE7664157865C80080B6B2 /* CoreLocation.framework */,
 				3F5C3A591576F69B00C0B420 /* ECSlidingViewController */,
 				1A13AD931577C7B000492345 /* GridView */,
@@ -430,6 +449,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		1A7B573B157CE9BD00D8A465 /* GCDiscreetNotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				1A7B573C157CE9BD00D8A465 /* GCDiscreetNotificationView.h */,
+				1A7B573D157CE9BD00D8A465 /* GCDiscreetNotificationView.m */,
+			);
+			name = GCDiscreetNotificationView;
+			path = SingleViewApp/Vendor/GCDiscreetNotificationView;
+			sourceTree = "<group>";
+		};
 		3F5C3A591576F69B00C0B420 /* ECSlidingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +499,14 @@
 			isa = PBXGroup;
 			children = (
 				3F5C3A631577058700C0B420 /* ListingTableViewCell.xib */,
+				1ABA08E6157D369A00D4C22B /* PropertyDetailsView.h */,
+				1ABA08E7157D369A00D4C22B /* PropertyDetailsView.m */,
+				1ABA08E9157D3C2700D4C22B /* MainMapViewController.h */,
+				1ABA08EA157D3C2700D4C22B /* MainMapViewController.m */,
+				1ABA08EB157D3C2700D4C22B /* MainMapViewController.xib */,
+				1A63CAA4157D548400E8F82D /* PropertyDetailsViewController.h */,
+				1A63CAA5157D548400E8F82D /* PropertyDetailsViewController.m */,
+				1A63CAA6157D548400E8F82D /* PropertyDetailsViewController.xib */,
 			);
 			name = "universal-xib";
 			sourceTree = "<group>";
@@ -578,6 +615,8 @@
 				3FAF919E157BB7D9001EFFBF /* InitialSlidingViewController_iPhone.xib in Resources */,
 				3FAF91A0157BB808001EFFBF /* MenuViewController_iPhone.xib in Resources */,
 				3FAF91A2157BB81F001EFFBF /* UnderRightViewController_iPhone.xib in Resources */,
+				1ABA08ED157D3C2700D4C22B /* MainMapViewController.xib in Resources */,
+				1A63CAA8157D548400E8F82D /* PropertyDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +655,10 @@
 				3F5C3AAB15784E5A00C0B420 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */,
 				3F5C3AAC15784E5A00C0B420 /* NSIndexSet+AQIsSetContiguous.m in Sources */,
 				3F5C3AAD15784E5A00C0B420 /* UIColor+AQGridView.m in Sources */,
+				1A7B573E157CE9BD00D8A465 /* GCDiscreetNotificationView.m in Sources */,
+				1ABA08E8157D369A00D4C22B /* PropertyDetailsView.m in Sources */,
+				1ABA08EC157D3C2700D4C22B /* MainMapViewController.m in Sources */,
+				1A63CAA7157D548400E8F82D /* PropertyDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

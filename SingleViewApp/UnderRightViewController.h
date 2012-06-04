@@ -21,6 +21,7 @@
     UIPopoverController * _menuPopoverController;
 }
 
+@property (nonatomic, retain) UIView *leadForm;
 @property (nonatomic, retain) IBOutlet AQGridView * gridView;
 
 - (IBAction) shuffle;

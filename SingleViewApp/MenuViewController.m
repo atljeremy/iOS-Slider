@@ -10,6 +10,7 @@
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
 
+#define SET_RIGHT_ANCHOR_FOR_IPHONE_DETAILS 0.0f
 #define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
 #define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
 #define SET_RIGHT_ANCHOR_FOR_AVAILABILITY 985.0f
@@ -94,7 +95,15 @@
                 cell = (ListingTableViewCell *)currentObject;
                 
                 NSArray *array = [[NSBundle mainBundle] pathsForResourcesOfType:@".png" inDirectory:@"/."];
-                NSString *randomPath = [array objectAtIndex:arc4random() % [array count]];
+                NSMutableArray *items = [[NSMutableArray alloc] init];
+                
+                for (NSString *item in array) {
+                    if ([item rangeOfString:@"apartment"].location != NSNotFound) {
+                        [items addObject:item];
+                    }
+                }
+                
+                NSString *randomPath = [items objectAtIndex:arc4random() % [items count]];
                 NSLog(@"%@", randomPath);
                 UIImage *propPhoto = [[UIImage alloc] initWithContentsOfFile:randomPath];
                 
@@ -126,10 +135,19 @@
 
 - (void)showDetails
 {
-    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
-    [self.slidingViewController anchorTopViewTo:ECRight];
-    
-    self.detailsScrollView.contentSize = CGSizeMake(350, 1000);
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        //[self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_IPHONE_DETAILS];
+        //[self.slidingViewController anchorTopViewTo:ECRight];
+        [self.slidingViewController resetTopView];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PropertySelected" 
+                                                            object:nil 
+                                                          userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"detailsShown"]];
+    } else {
+        [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
+        [self.slidingViewController anchorTopViewTo:ECRight];
+        self.detailsScrollView.contentSize = CGSizeMake(350, 1000);
+        [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS];
+    }
     
     [self.detailsPhoto.layer setBorderColor: [[UIColor whiteColor] CGColor]];
     [self.detailsPhoto.layer setBorderWidth: 6.0];
@@ -150,7 +168,7 @@
     [self.propertyMap addAnnotation:annotation];
     
     [menuDelegate zoomMapToSelectedPropertyLocation:propertyCoordinate];
-    [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS];
+
 }
 
 - (void)showLeadForm
