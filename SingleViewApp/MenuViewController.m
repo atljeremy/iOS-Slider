@@ -10,7 +10,6 @@
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
 
-#define SET_RIGHT_ANCHOR_FOR_IPHONE_DETAILS 0.0f
 #define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
 #define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
 #define SET_RIGHT_ANCHOR_FOR_AVAILABILITY 985.0f
@@ -136,8 +135,6 @@
 - (void)showDetails
 {
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        //[self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_IPHONE_DETAILS];
-        //[self.slidingViewController anchorTopViewTo:ECRight];
         [self.slidingViewController resetTopView];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"PropertySelected" 
                                                             object:nil 
@@ -168,7 +165,6 @@
     [self.propertyMap addAnnotation:annotation];
     
     [menuDelegate zoomMapToSelectedPropertyLocation:propertyCoordinate];
-
 }
 
 - (void)showLeadForm

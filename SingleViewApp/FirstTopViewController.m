@@ -93,16 +93,25 @@
 
 
 - (void)loadMapView{
+    NSLog(@"Main View Container: wxh: %f x %f", self.mainViewContainer.bounds.size.width, self.mainViewContainer.bounds.size.height);
     mainMapViewController = [[MainMapViewController alloc] initWithNibName:@"MainMapViewController" bundle:nil];
     detailsViewController = [[PropertyDetailsViewController alloc] initWithNibName:@"PropertyDetailsViewController" bundle:nil];
+    
+    NSLog(@"Map View Container: wxh: %f x %f", mainMapViewController.mkMapView.bounds.size.width, mainMapViewController.mkMapView.bounds.size.height);
+    
+    NSLog(@"Setting Size from loadMapView");
+//    [mainMapViewController.mkMapView setFrame:CGRectMake(0, 0, self.mainViewContainer.bounds.size.width, self.mainViewContainer.bounds.size.height)];
     
     mapView = mainMapViewController.mkMapView;
     detailsView = detailsViewController.view;
     [detailsView setAlpha:0.0f];
     
     
-    [self.mainViewContainer addSubview:mapView];
+    [self.mainViewContainer addSubview:mainMapViewController.view];
     [self.mainViewContainer addSubview:detailsView];
+    
+    NSLog(@"HELLO");
+    [mainMapViewController.view setFrame:CGRectMake(0, 0, self.mainViewContainer.bounds.size.width, self.mainViewContainer.bounds.size.height)];
 }
 
 - (IBAction)revealMenu:(id)sender
@@ -203,7 +212,7 @@
 
 - (void)setPinAtLocation:(CLLocationCoordinate2D)location withDescription:(NSString *)desc andAddress:(NSString *)address
 {
-    MyLocation *annotation = [[MyLocation alloc] initWithName:desc address:address coordinate:location] ;
+    MyLocation *annotation = [[MyLocation alloc] initWithName:desc address:address coordinate:location];
     [self.mapView addAnnotation:annotation];
 }
 

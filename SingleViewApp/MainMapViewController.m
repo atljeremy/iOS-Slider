@@ -8,6 +8,12 @@
 
 #import "MainMapViewController.h"
 
+@interface MainMapViewController()
+
+- (CGRect)screenSize;
+
+@end
+
 @implementation MainMapViewController
 @synthesize mkMapView;
 
@@ -16,7 +22,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        mkMapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
     }
     return self;
 }
@@ -47,7 +52,22 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
+}
+
+- (CGRect)screenSize {
+    UIScreen *screen = [UIScreen mainScreen];
+    int width = screen.applicationFrame.size.width;
+    int height = screen.applicationFrame.size.height;
+    
+    NSLog(@"Status Bar Orientation: %d v. %d", [[UIDevice currentDevice] orientation], UIDeviceOrientationPortrait);
+    
+    if ( ([[UIApplication sharedApplication] statusBarOrientation] == UIDeviceOrientationLandscapeLeft) || 
+         ([[UIApplication sharedApplication] statusBarOrientation] == UIDeviceOrientationLandscapeRight) ) {
+        return CGRectMake(0, 0, height, width);
+    }
+    
+    return CGRectMake(0, 0, width, height);
 }
 
 @end
