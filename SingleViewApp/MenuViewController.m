@@ -79,7 +79,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
     //return self.menuItems.count;
-    return 25;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,10 +109,10 @@
                 cell.cellImageView.image = propPhoto;
                 [cell.cellImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
                 [cell.cellImageView.layer setBorderWidth: 6.0];
-                [cell.cellImageView.layer setShadowColor:[UIColor blackColor].CGColor];
-                [cell.cellImageView.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
-                [cell.cellImageView.layer setShadowRadius:3.0];
-                [cell.cellImageView.layer setShadowOpacity:0.5];
+//                [cell.cellImageView.layer setShadowColor:[UIColor blackColor].CGColor];
+//                [cell.cellImageView.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
+//                [cell.cellImageView.layer setShadowRadius:3.0];
+//                [cell.cellImageView.layer setShadowOpacity:0.5];
                 
                 break;
             }
@@ -148,10 +148,10 @@
     
     [self.detailsPhoto.layer setBorderColor: [[UIColor whiteColor] CGColor]];
     [self.detailsPhoto.layer setBorderWidth: 6.0];
-    [self.detailsPhoto.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.detailsPhoto.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
-    [self.detailsPhoto.layer setShadowRadius:3.0];
-    [self.detailsPhoto.layer setShadowOpacity:0.5];
+//    [self.detailsPhoto.layer setShadowColor:[UIColor blackColor].CGColor];
+//    [self.detailsPhoto.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
+//    [self.detailsPhoto.layer setShadowRadius:3.0];
+//    [self.detailsPhoto.layer setShadowOpacity:0.5];
     
     CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
     [self.propertyMap setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];

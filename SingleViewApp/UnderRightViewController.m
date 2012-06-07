@@ -9,6 +9,7 @@
 #import "UnderRightViewController.h"
 #import "ImageDemoGridViewCell.h"
 #import "ImageDemoFilledCell.h"
+#import "PropertyLeadFormViewController.h"
 
 enum
 {
@@ -23,18 +24,18 @@ enum
 @end
 
 @implementation UnderRightViewController
+@synthesize leadFormController;
 @synthesize peekLeftAmount;
 @synthesize gridView=_gridView;
 @synthesize leadForm;
+@synthesize myPlacesTitle = _myPlacesTitle;
+@synthesize leadFormTitle = _leadFormTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
-        leadForm = [[UIView alloc] init];
-        leadForm.alpha = 0.0f;
     }
     return self;
 }
@@ -56,6 +57,9 @@ enum
 - (void)viewDidUnload
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ToggleLeadForm" object:nil];
+    [self setLeadForm:nil];
+    [self setMyPlacesTitle:nil];
+    [self setLeadFormTitle:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -74,6 +78,11 @@ enum
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleLeadForm:) name:@"ToggleLeadForm" object:nil];
+    
+    leadFormController = [[PropertyLeadFormViewController alloc] initWithNibName:@"PropertyLeadForm" bundle:nil];
+    [leadForm addSubview:leadFormController.view];
+    leadForm.alpha = 0.0f;
+    self.leadFormTitle.alpha = 0.0f;
     
     self.peekLeftAmount = 50.0f;
     [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
@@ -310,12 +319,16 @@ enum
         [UIView animateWithDuration:0.25 animations:^{
             _gridView.alpha = 0.0;
             leadForm.alpha = 1.0;
+            self.leadFormTitle.alpha = 1.0f;
+            self.myPlacesTitle.alpha = 0.0f;
         }];
     }
     else {
         [UIView animateWithDuration:0.25 animations:^{
             _gridView.alpha = 1.0;
             leadForm.alpha = 0.0;
+            self.myPlacesTitle.alpha = 1.0f;
+            self.leadFormTitle.alpha = 0.0f;
         }];
     }
 }

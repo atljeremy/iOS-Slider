@@ -7,7 +7,10 @@
 //
 
 #import "ECSlidingViewController.h"
+#import "PropertyLeadThankYouViewController.h"
 
 @interface InitialSlidingViewController : ECSlidingViewController
+
+- (void)showThankYou;
 
 @end

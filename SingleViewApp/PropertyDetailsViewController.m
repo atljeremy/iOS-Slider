@@ -7,8 +7,14 @@
 //
 
 #import "PropertyDetailsViewController.h"
+#import "MyLocation.h"
+
+#define SET_LEFT_ANCHOR_FOR_LEAD_FORM 290.0f
 
 @implementation PropertyDetailsViewController
+@synthesize scrollView;
+@synthesize propPhoto;
+@synthesize mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,12 +39,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    UIScrollView *scrollView = (UIScrollView*)[self.view viewWithTag:10];
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 960);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 1500);
 }
 
 - (void)viewDidUnload
 {
+    [self setScrollView:nil];
+    [self setPropPhoto:nil];
+    [self setMapView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,6 +56,36 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)checkAvailability:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"ShowLeadForm" object:nil]];
+}
+
+#pragma mark MKMapView delegate
+- (MKAnnotationView *)mapView:(MKMapView *)mapview viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationIdentifier];
+    if(annotationView)
+        return annotationView;
+    else
+    {
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                        reuseIdentifier:AnnotationIdentifier];
+        annotationView.canShowCallout = YES;
+        annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"map-pin.png"]];
+        UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton addTarget:self action:@selector(revealMenuAndShowDetails) forControlEvents:UIControlEventTouchUpInside];
+        [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+        annotationView.rightCalloutAccessoryView = rightButton;
+        annotationView.canShowCallout = YES;
+        annotationView.draggable = YES;
+        return annotationView;
+    }
+    return nil;
 }
 
 @end

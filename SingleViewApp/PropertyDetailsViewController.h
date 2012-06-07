@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "ECSlidingViewController.h"
 
-@interface PropertyDetailsViewController : UIViewController <UIScrollViewDelegate>
+@interface PropertyDetailsViewController : UIViewController <UIScrollViewDelegate, MKMapViewDelegate>
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *propPhoto;
+@property (unsafe_unretained, nonatomic) IBOutlet MKMapView *mapView;
+- (IBAction)checkAvailability:(id)sender;
 
 @end

@@ -22,7 +22,7 @@
 
 @interface FirstTopViewController : UIViewController <MenuViewControllerDelegate, MKMapViewDelegate, DiscreetNotifications>
 
-- (void)setPinAtLocation:(CLLocationCoordinate2D)location withDescription:(NSString *)desc andAddress:(NSString *)address;
+- (void)setPinAtLocation:(CLLocationCoordinate2D)location onMap:(MKMapView *)mapView withDescription:(NSString *)desc andAddress:(NSString *)address;
 - (IBAction)revealMenu:(id)sender;
 - (void)revealMenuAndShowDetails;
 - (IBAction)revealUnderRight:(id)sender;

@@ -66,9 +66,10 @@
     notificationView = [[GCDiscreetNotificationView alloc] initWithText: @"This Is My Notification"
                                                            showActivity: YES
                                                      inPresentationMode: GCDiscreetNotificationViewPresentationModeTop 
-                                                                 inView: self.mapView];
+                                                                 inView: mainMapViewController.mkMapView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadPropertyDetails:) name:@"PropertySelected" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(revealUnderRight:) name:@"ShowLeadForm" object:nil];
     
 }
 
@@ -106,12 +107,22 @@
     detailsView = detailsViewController.view;
     [detailsView setAlpha:0.0f];
     
+    [detailsViewController.propPhoto.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+    [detailsViewController.propPhoto.layer setBorderWidth: 6.0];
+//    [detailsViewController.propPhoto.layer setShadowColor:[UIColor blackColor].CGColor];
+//    [detailsViewController.propPhoto.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
+//    [detailsViewController.propPhoto.layer setShadowRadius:3.0];
+//    [detailsViewController.propPhoto.layer setShadowOpacity:0.5];
     
     [self.mainViewContainer addSubview:mainMapViewController.view];
     [self.mainViewContainer addSubview:detailsView];
     
     NSLog(@"HELLO");
     [mainMapViewController.view setFrame:CGRectMake(0, 0, self.mainViewContainer.bounds.size.width, self.mainViewContainer.bounds.size.height)];
+    NSLog(@"Map View Container: wxh: %f x %f", mainMapViewController.mkMapView.bounds.size.width, mainMapViewController.mkMapView.bounds.size.height);
+    CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
+    [mainMapViewController.mkMapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];
+    [detailsViewController.mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];
 }
 
 - (IBAction)revealMenu:(id)sender
@@ -146,7 +157,7 @@
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
                                           initWithTarget:self action:@selector(handleLongPress:)];
     lpgr.minimumPressDuration = 2.0; //user needs to press for 2 seconds
-    [self.mapView addGestureRecognizer:lpgr];
+    [mainMapViewController.mkMapView addGestureRecognizer:lpgr];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
@@ -171,7 +182,8 @@
     NSString * description = @"Description";
     NSString * address = @"Address";
     
-    [self setPinAtLocation:centerCoord withDescription:description andAddress:address];
+    [self setPinAtLocation:centerCoord onMap:mainMapViewController.mkMapView withDescription:description andAddress:address];
+    [self setPinAtLocation:centerCoord onMap:detailsViewController.mapView withDescription:description andAddress:address];
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
 }
@@ -179,9 +191,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    NSLog(@"View did appear");
     CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
-    [mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];
+    [mainMapViewController.mkMapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:NO];
 }
 
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
@@ -189,31 +201,31 @@
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
     
-    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];   
-    CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    CGPoint touchPoint = [gestureRecognizer locationInView:mainMapViewController.mkMapView];   
+    CLLocationCoordinate2D touchMapCoordinate = [mainMapViewController.mkMapView convertPoint:touchPoint toCoordinateFromView:mainMapViewController.mkMapView];
     
     NSString * description = @"Description";
     NSString * address = @"Address";
     
-    [self setPinAtLocation:touchMapCoordinate withDescription:description andAddress:address];
+    [self setPinAtLocation:touchMapCoordinate onMap:mainMapViewController.mkMapView withDescription:description andAddress:address];
 }
 
 - (void)zoomMapToSelectedPropertyLocation:(CLLocationCoordinate2D)location
 {
-    [mapView setCenterCoordinate:location zoomLevel:ZOOM_LEVEL animated:YES];
+    [mainMapViewController.mkMapView setCenterCoordinate:location zoomLevel:ZOOM_LEVEL animated:YES];
 }
 
 - (void)updateMapViewWidthTo:(int)width
 {
-    CGRect f = mapView.frame;
+    CGRect f = mainMapViewController.mkMapView.frame;
     f.size.width = width;
-    mapView.frame = f;
+    mainMapViewController.mkMapView.frame = f;
 }
 
-- (void)setPinAtLocation:(CLLocationCoordinate2D)location withDescription:(NSString *)desc andAddress:(NSString *)address
+- (void)setPinAtLocation:(CLLocationCoordinate2D)location onMap:(MKMapView *)mapViewA withDescription:(NSString *)desc andAddress:(NSString *)address
 {
     MyLocation *annotation = [[MyLocation alloc] initWithName:desc address:address coordinate:location];
-    [self.mapView addAnnotation:annotation];
+    [mapViewA addAnnotation:annotation];
 }
 
 - (void)loadPropertyDetails:(NSNotification*)notification {
@@ -227,7 +239,7 @@
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
-    MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationIdentifier];
+    MKAnnotationView *annotationView = [mainMapViewController.mkMapView dequeueReusableAnnotationViewWithIdentifier:AnnotationIdentifier];
     if(annotationView)
         return annotationView;
     else
@@ -276,7 +288,7 @@
     
     if ([toggle selectedSegmentIndex] == 0) {
         [UIView animateWithDuration:0.25 animations:^{
-            mapView.alpha = 1.0;
+            mainMapViewController.mkMapView.alpha = 1.0;
             detailsView.alpha = 0.0;
         }];
         
@@ -285,7 +297,7 @@
     else {
         [UIView animateWithDuration:0.25 animations:^{
             detailsView.alpha = 1.0;
-            mapView.alpha = 0.0;
+            mainMapViewController.mkMapView.alpha = 0.0;
         }];
         
         detailsShown = YES;

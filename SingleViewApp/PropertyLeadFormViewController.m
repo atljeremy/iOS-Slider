@@ -1,21 +1,20 @@
 //
-//  InitialSlidingViewController.m
+//  PropertyLeadFormViewController.m
 //  SingleViewApp
 //
-//  Created by Jeremy Fox on 5/30/12.
+//  Created by Jeremy Fox on 6/7/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "InitialSlidingViewController.h"
+#import "PropertyLeadFormViewController.h"
 
-@implementation InitialSlidingViewController
+@implementation PropertyLeadFormViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
     }
     return self;
 }
@@ -30,13 +29,20 @@
 
 #pragma mark - View lifecycle
 
+/*
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+}
+*/
+
+/*
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showThankYou) name:@"ShowLeadThankYou" object:nil];
 }
+*/
 
 - (void)viewDidUnload
 {
@@ -44,21 +50,17 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ShowLeadThankYou" object:nil];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)showThankYou{
-    PropertyLeadThankYouViewController *thankYouView = [[PropertyLeadThankYouViewController alloc] initWithNibName:@"PropertyLeadThankYouViewController" bundle:nil];
-    
-    thankYouView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    [self presentModalViewController:thankYouView animated:YES];
-}
+- (IBAction)submitLead:(id)sender {
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowLeadThankYou" object:nil];
+}
 @end
