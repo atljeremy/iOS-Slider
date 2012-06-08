@@ -12,5 +12,6 @@
 @interface PropertyLeadThankYouViewController : UIViewController
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *thankYouListings;
 - (IBAction)continueBtn:(id)sender;
+- (IBAction)dismissThankYouScreen:(id)sender;
 
 @end

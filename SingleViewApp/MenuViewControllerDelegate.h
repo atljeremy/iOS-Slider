@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MKMapView+ZoomLevel.h"
+#import "MyLocation.h"
 
 @protocol MenuViewControllerDelegate <NSObject>
 

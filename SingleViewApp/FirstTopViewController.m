@@ -169,6 +169,7 @@
     }
     
     menuViewController.menuDelegate = self;
+    underRightViewController.menuDelegate = self;
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController = menuViewController;

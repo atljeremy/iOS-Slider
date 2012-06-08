@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A1A5E891580F1B900E4546F /* foo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A5E881580F1B900E4546F /* foo.xib */; };
 		1A1A5E8F158107C500E4546F /* PropertyLeadForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A5E8D158107C500E4546F /* PropertyLeadForm.xib */; };
 		1A228DA71577C19900A2652A /* UnderRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2DC1576B3610013DA35 /* UnderRightViewController.m */; };
 		1A46F0121579196B0036D4F9 /* map-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A46F0101579196B0036D4F9 /* map-pin.png */; };
@@ -110,7 +109,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A1A5E881580F1B900E4546F /* foo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = foo.xib; sourceTree = "<group>"; };
 		1A1A5E8D158107C500E4546F /* PropertyLeadForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyLeadForm.xib; sourceTree = "<group>"; };
 		1A46F0101579196B0036D4F9 /* map-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin.png"; sourceTree = "<group>"; };
 		1A46F0111579196B0036D4F9 /* map-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin@2x.png"; sourceTree = "<group>"; };
@@ -522,7 +520,6 @@
 				1A63CAA4157D548400E8F82D /* PropertyDetailsViewController.h */,
 				1A63CAA5157D548400E8F82D /* PropertyDetailsViewController.m */,
 				1A63CAA6157D548400E8F82D /* PropertyDetailsViewController.xib */,
-				1A1A5E881580F1B900E4546F /* foo.xib */,
 				1A1A5E8D158107C500E4546F /* PropertyLeadForm.xib */,
 				1A4756B31581362000FAE791 /* PropertyLeadFormViewController.h */,
 				1A4756B41581362000FAE791 /* PropertyLeadFormViewController.m */,
@@ -639,7 +636,6 @@
 				3FAF91A2157BB81F001EFFBF /* UnderRightViewController_iPhone.xib in Resources */,
 				1ABA08ED157D3C2700D4C22B /* MainMapViewController.xib in Resources */,
 				1A63CAA8157D548400E8F82D /* PropertyDetailsViewController.xib in Resources */,
-				1A1A5E891580F1B900E4546F /* foo.xib in Resources */,
 				1A1A5E8F158107C500E4546F /* PropertyLeadForm.xib in Resources */,
 				1A4756BA15813EC600FAE791 /* PropertyLeadThankYouViewController.xib in Resources */,
 				1AFFBA0A158142E600664369 /* ListingTableViewCellThankYou.xib in Resources */,
