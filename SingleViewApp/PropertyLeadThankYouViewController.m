@@ -54,6 +54,10 @@
 - (IBAction)continueBtn:(id)sender {
 }
 
+- (IBAction)dismissThankYouScreen:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 // TABLE VIEW DELEGATE/DATASOURCE METHODS
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
@@ -110,4 +114,5 @@
 {
     
 }
+
 @end

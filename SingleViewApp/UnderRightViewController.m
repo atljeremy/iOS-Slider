@@ -10,6 +10,8 @@
 #import "ImageDemoGridViewCell.h"
 #import "ImageDemoFilledCell.h"
 #import "PropertyLeadFormViewController.h"
+#import "MKMapView+ZoomLevel.h"
+#import "MyLocation.h"
 
 enum
 {
@@ -18,9 +20,15 @@ enum
     ImageDemoCellTypeOffset
 };
 
+#define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
+#define SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS 374
+#define GEORGIA_TECH_LATITUDE 33.777328
+#define GEORGIA_TECH_LONGITUDE -84.397348
 
 @interface UnderRightViewController()
 @property (nonatomic, unsafe_unretained) CGFloat peekLeftAmount;
+
+- (void)showDetails;
 @end
 
 @implementation UnderRightViewController
@@ -30,6 +38,8 @@ enum
 @synthesize leadForm;
 @synthesize myPlacesTitle = _myPlacesTitle;
 @synthesize leadFormTitle = _leadFormTitle;
+@synthesize detailsScrollView;
+@synthesize menuDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -307,6 +317,11 @@ enum
     return ( cell );
 }
 
+- (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index {
+    NSLog(@"WHAT UP!");
+    [self showDetails];
+}
+
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
     return ( CGSizeMake(224.0, 168.0) );
@@ -331,6 +346,30 @@ enum
             self.leadFormTitle.alpha = 0.0f;
         }];
     }
+}
+
+- (void)showDetails
+{
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        [self.slidingViewController resetTopView];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PropertySelected" 
+                                                            object:nil 
+                                                          userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"detailsShown"]];
+    } else {
+        [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
+        [self.slidingViewController anchorTopViewTo:ECRight];
+        self.detailsScrollView.contentSize = CGSizeMake(350, 1000);
+        [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS];
+    }
+    
+    CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
+    
+    CLLocationCoordinate2D propertyCoordinate = CLLocationCoordinate2DMake(GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE);
+    
+    NSString * description = @"Description";
+    NSString * address = @"Address";
+    
+    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:propertyCoordinate];
 }
 
 @end

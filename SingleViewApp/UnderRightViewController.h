@@ -10,6 +10,8 @@
 #import "ECSlidingViewController.h"
 #import "AQGridView.h"
 #import "ImageDemoCellChooser.h"
+#import "MenuViewControllerDelegate.h"
+
 @class PropertyLeadFormViewController;
 
 @interface UnderRightViewController : UIViewController <AQGridViewDelegate, AQGridViewDataSource, ImageDemoCellChooserDelegate>
@@ -22,8 +24,10 @@
     UIPopoverController * _menuPopoverController;
 }
 
+@property (assign) id<MenuViewControllerDelegate> menuDelegate;
 @property (nonatomic, retain) PropertyLeadFormViewController *leadFormController;
 @property (nonatomic, retain) IBOutlet AQGridView * gridView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIScrollView *detailsScrollView;
 
 - (IBAction) shuffle;
 - (IBAction) resetOrder;
