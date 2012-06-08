@@ -79,7 +79,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
     //return self.menuItems.count;
-    return 10;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,7 +112,7 @@
 //                [cell.cellImageView.layer setShadowColor:[UIColor blackColor].CGColor];
 //                [cell.cellImageView.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
 //                [cell.cellImageView.layer setShadowRadius:3.0];
-//                [cell.cellImageView.layer setShadowOpacity:0.5];
+                
                 
                 break;
             }

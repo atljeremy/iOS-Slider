@@ -12,5 +12,7 @@
 @interface MainMapViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic, retain) IBOutlet MKMapView *mkMapView;
+- (IBAction)nearbySearch:(id)sender;
+- (IBAction)entrySearch:(id)sender;
 
 @end

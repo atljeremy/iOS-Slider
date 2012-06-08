@@ -56,7 +56,7 @@
 - (void)showThankYou{
     PropertyLeadThankYouViewController *thankYouView = [[PropertyLeadThankYouViewController alloc] initWithNibName:@"PropertyLeadThankYouViewController" bundle:nil];
     
-    thankYouView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    thankYouView.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     
     [self presentModalViewController:thankYouView animated:YES];
 }

@@ -14,6 +14,13 @@
 #define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
 #define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
 #define SET_RIGHT_ANCHOR_FOR_AVAILABILITY 985.0f
+
+#define GEORGIA_TECH_LATITUDE 33.777328
+#define GEORGIA_TECH_LONGITUDE -84.397348
+
+#define ZOOM_LEVEL 14
+#define ZOOM_LEVEL_MULTI 16
+
 @interface FirstTopViewController()
 {
     
@@ -28,11 +35,6 @@
 @synthesize leftSliderImage;
 @synthesize mapView, detailsView;
 @synthesize menuViewController, detailsViewController, underRightViewController, notificationView, mainMapViewController;
-
-#define GEORGIA_TECH_LATITUDE 33.777328
-#define GEORGIA_TECH_LONGITUDE -84.397348
-
-#define ZOOM_LEVEL 14
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,6 +72,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadPropertyDetails:) name:@"PropertySelected" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(revealUnderRight:) name:@"ShowLeadForm" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performNearbySearch) name:@"searchNearby" object:nil];
     
 }
 
@@ -80,6 +83,8 @@
     [self setMapView:nil];
     [self setToggle:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PropertySelected" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ShowLeadForm" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"searchNearby" object:nil];
     [self setMainViewContainer:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -231,6 +236,30 @@
 - (void)loadPropertyDetails:(NSNotification*)notification {
     [toggle setSelectedSegmentIndex:1];
     [self tappedToggle:nil];
+}
+
+- (void)performNearbySearch{
+    [self setNotificationLabel:@"Finding Apartments Near You" withActivityIndicator:YES andAnimation:YES];
+    [self showNotificationAndDismiss];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"points" ofType:@"plist"];
+    NSDictionary *points = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSArray *pointsArray = [points objectForKey:@"points"];
+    CLLocationCoordinate2D theCoordinate;
+
+    for(NSDictionary *dict in pointsArray) {
+        
+        double realLatitude = [[dict objectForKey:@"latitude"] doubleValue];
+        double realLongitude = [[dict objectForKey:@"longitude"] doubleValue];
+
+        theCoordinate.latitude = realLatitude;
+        theCoordinate.longitude = realLongitude;
+        NSString * title = @"Apartment Title";
+        NSString * address = @"Address";
+        
+        [self setPinAtLocation:theCoordinate onMap:mainMapViewController.mkMapView withDescription:title andAddress:address];
+    }
+    [mainMapViewController.mkMapView setCenterCoordinate:theCoordinate zoomLevel:ZOOM_LEVEL_MULTI animated:YES];
 }
 
 #pragma mark MKMapView delegate

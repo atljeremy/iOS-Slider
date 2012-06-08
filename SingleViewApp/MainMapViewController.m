@@ -96,4 +96,11 @@
     return nil;
 }
 
+- (IBAction)nearbySearch:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"searchNearby" object:nil];
+}
+
+- (IBAction)entrySearch:(id)sender {
+    
+}
 @end

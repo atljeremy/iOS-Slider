@@ -27,6 +27,7 @@
 - (void)revealMenuAndShowDetails;
 - (IBAction)revealUnderRight:(id)sender;
 - (IBAction)tappedToggle:(id)sender;
+- (void)performNearbySearch;
 
 @property (nonatomic, strong) MenuViewController *menuViewController;
 @property (nonatomic, strong) UnderRightViewController *underRightViewController;

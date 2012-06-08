@@ -79,6 +79,13 @@
 		1ABA08ED157D3C2700D4C22B /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABA08EB157D3C2700D4C22B /* MainMapViewController.xib */; };
 		1AFFBA08158141CE00664369 /* PropertyLeadThankYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFFBA07158141CE00664369 /* PropertyLeadThankYouViewController.m */; };
 		1AFFBA0A158142E600664369 /* ListingTableViewCellThankYou.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AFFBA09158142E600664369 /* ListingTableViewCellThankYou.xib */; };
+		3F46C38A1582430600D2481C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F46C3891582430600D2481C /* Default.png */; };
+		3F46C38D1582430A00D2481C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F46C38C1582430A00D2481C /* Default@2x.png */; };
+		3F46C39415824B2500D2481C /* prop-photo-dropshadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F46C39215824B2500D2481C /* prop-photo-dropshadow.png */; };
+		3F46C39515824B2500D2481C /* prop-photo-dropshadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F46C39315824B2500D2481C /* prop-photo-dropshadow@2x.png */; };
+		3F46C39815824E8900D2481C /* nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F46C39615824E8900D2481C /* nearby.png */; };
+		3F46C39915824E8900D2481C /* nearby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F46C39715824E8900D2481C /* nearby@2x.png */; };
+		3F46C39B1582789000D2481C /* points.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F46C39A1582789000D2481C /* points.plist */; };
 		3F5C3A5E1576F69B00C0B420 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C3A5B1576F69B00C0B420 /* ECSlidingViewController.m */; };
 		3F5C3A5F1576F69B00C0B420 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C3A5D1576F69B00C0B420 /* UIImage+ImageWithUIView.m */; };
 		3F5C3A62157704D100C0B420 /* ListingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C3A61157704D100C0B420 /* ListingTableViewCell.m */; };
@@ -202,6 +209,13 @@
 		1AFFBA06158141CE00664369 /* PropertyLeadThankYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyLeadThankYouViewController.h; sourceTree = "<group>"; };
 		1AFFBA07158141CE00664369 /* PropertyLeadThankYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyLeadThankYouViewController.m; sourceTree = "<group>"; };
 		1AFFBA09158142E600664369 /* ListingTableViewCellThankYou.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingTableViewCellThankYou.xib; sourceTree = "<group>"; };
+		3F46C3891582430600D2481C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3F46C38C1582430A00D2481C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3F46C39215824B2500D2481C /* prop-photo-dropshadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prop-photo-dropshadow.png"; sourceTree = "<group>"; };
+		3F46C39315824B2500D2481C /* prop-photo-dropshadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prop-photo-dropshadow@2x.png"; sourceTree = "<group>"; };
+		3F46C39615824E8900D2481C /* nearby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearby.png; sourceTree = "<group>"; };
+		3F46C39715824E8900D2481C /* nearby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nearby@2x.png"; sourceTree = "<group>"; };
+		3F46C39A1582789000D2481C /* points.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = points.plist; sourceTree = "<group>"; };
 		3F5C3A5A1576F69B00C0B420 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
 		3F5C3A5B1576F69B00C0B420 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		3F5C3A5C1576F69B00C0B420 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
@@ -324,6 +338,10 @@
 		1A54E0531577D80C00BB9D5D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3F46C39615824E8900D2481C /* nearby.png */,
+				3F46C39715824E8900D2481C /* nearby@2x.png */,
+				3F46C39215824B2500D2481C /* prop-photo-dropshadow.png */,
+				3F46C39315824B2500D2481C /* prop-photo-dropshadow@2x.png */,
 				1A56020915792009007A9C11 /* logo.png */,
 				1A46F0101579196B0036D4F9 /* map-pin.png */,
 				1A46F0111579196B0036D4F9 /* map-pin@2x.png */,
@@ -380,6 +398,8 @@
 		1A72C286157664360013DA35 = {
 			isa = PBXGroup;
 			children = (
+				3F46C38C1582430A00D2481C /* Default@2x.png */,
+				3F46C3891582430600D2481C /* Default.png */,
 				1A56024915793FCF007A9C11 /* apartments */,
 				1A54E0531577D80C00BB9D5D /* images */,
 				1A72C29B157664360013DA35 /* SingleViewApp */,
@@ -420,6 +440,7 @@
 				1A72C2A4157664360013DA35 /* AppDelegate.h */,
 				1A72C2A5157664360013DA35 /* AppDelegate.m */,
 				1A72C29C157664360013DA35 /* Supporting Files */,
+				3F46C39A1582789000D2481C /* points.plist */,
 			);
 			path = SingleViewApp;
 			sourceTree = "<group>";
@@ -643,6 +664,13 @@
 				1A1A5E8F158107C500E4546F /* PropertyLeadForm.xib in Resources */,
 				1A4756BA15813EC600FAE791 /* PropertyLeadThankYouViewController.xib in Resources */,
 				1AFFBA0A158142E600664369 /* ListingTableViewCellThankYou.xib in Resources */,
+				3F46C38A1582430600D2481C /* Default.png in Resources */,
+				3F46C38D1582430A00D2481C /* Default@2x.png in Resources */,
+				3F46C39415824B2500D2481C /* prop-photo-dropshadow.png in Resources */,
+				3F46C39515824B2500D2481C /* prop-photo-dropshadow@2x.png in Resources */,
+				3F46C39815824E8900D2481C /* nearby.png in Resources */,
+				3F46C39915824E8900D2481C /* nearby@2x.png in Resources */,
+				3F46C39B1582789000D2481C /* points.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
