@@ -8,14 +8,19 @@
 
 #import "MainMapViewController.h"
 
+#define TOOLBAR_HEIGHT 44.0f
+#define NAVIGATIONBAR_HEIGHT_PORTRAIT 44.0f
+#define NAVIGATIONBAR_HEIGHT_LANDSCAPE 32.0f
+
 @interface MainMapViewController()
 
 - (CGRect)screenSize;
+- (void)orientationChanged:(NSNotification*)notification;
 
 @end
 
 @implementation MainMapViewController
-@synthesize mkMapView;
+@synthesize mkMapView, toolbar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +44,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UIDevice *device = [UIDevice currentDevice];
+    [device beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:device];
 
 }
 
@@ -48,12 +56,31 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    UIDevice *device = [UIDevice currentDevice];
+    [device endGeneratingDeviceOrientationNotifications];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return YES;
+}
+
+- (void)orientationChanged:(NSNotification*)notification{
+    
+    self.view.frame = [self screenSize];
+    
+    CGFloat navBarHeight = NAVIGATIONBAR_HEIGHT_PORTRAIT;
+    
+    if ( ([[UIApplication sharedApplication] statusBarOrientation] == UIDeviceOrientationLandscapeLeft) || 
+        ([[UIApplication sharedApplication] statusBarOrientation] == UIDeviceOrientationLandscapeRight) ) {
+        navBarHeight = NAVIGATIONBAR_HEIGHT_LANDSCAPE;
+    }
+
+    
+    CGFloat toolBarY = self.view.frame.size.height - (TOOLBAR_HEIGHT + navBarHeight);
+    toolbar.frame = CGRectMake(0, toolBarY, self.view.frame.size.width, TOOLBAR_HEIGHT);
+
 }
 
 - (CGRect)screenSize {
