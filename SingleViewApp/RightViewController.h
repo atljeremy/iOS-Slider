@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
+//#import "ECSlidingViewController.h"
 #import "AQGridView.h"
 #import "ImageDemoCellChooser.h"
 #import "MenuViewControllerDelegate.h"
 
 @class PropertyLeadFormViewController;
 
-@interface UnderRightViewController : UIViewController <AQGridViewDelegate, AQGridViewDataSource, ImageDemoCellChooserDelegate>
+@interface RightViewController : UIViewController <AQGridViewDelegate, AQGridViewDataSource, ImageDemoCellChooserDelegate>
 {
     NSArray * _orderedImageNames;
     NSArray * _imageNames;

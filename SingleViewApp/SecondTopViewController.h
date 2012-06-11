@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
-#import "MenuViewController.h"
+#import "LeftViewController.h"
 
 @interface SecondTopViewController : UIViewController
 

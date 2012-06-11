@@ -8,17 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "ECSlidingViewController.h"
 #import "ListingTableViewCell.h"
 #import "MenuViewControllerDelegate.h"
 
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, MKMapViewDelegate>
+//#import "ECSlidingViewController.h"
+
+@interface LeftViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, MKMapViewDelegate>
 
 @property (assign) id<MenuViewControllerDelegate> menuDelegate;
 @property (unsafe_unretained, nonatomic) IBOutlet UIScrollView *detailsScrollView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *detailsPhoto;
 @property (unsafe_unretained, nonatomic) IBOutlet MKMapView *propertyMap;
-- (IBAction)checkAvailability:(id)sender;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextView *descTextView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *descTitleView;
+
+- (IBAction)checkAvailability:(id)sender;
 @end

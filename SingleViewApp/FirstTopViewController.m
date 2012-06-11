@@ -7,9 +7,10 @@
 //
 
 #import "FirstTopViewController.h"
-#import "MenuViewController.h"
+#import "LeftViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
+#import "IIViewDeckController.h"
 
 #define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
 #define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
@@ -21,18 +22,11 @@
 #define ZOOM_LEVEL 14
 #define ZOOM_LEVEL_MULTI 16
 
-@interface FirstTopViewController()
-{
-    
-}
--(void)loadMapView;
-
-@end
 @implementation FirstTopViewController
-@synthesize toggle;
 @synthesize mainViewContainer;
 @synthesize rightSliderImage;
 @synthesize leftSliderImage;
+@synthesize segmentedControl;
 @synthesize mapView, detailsView;
 @synthesize menuViewController, detailsViewController, underRightViewController, notificationView, mainMapViewController;
 
@@ -60,7 +54,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UIBarButtonItem *listViewBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"List" 
+                                                                              style:UIBarButtonItemStylePlain 
+                                                                             target:self 
+                                                                             action:@selector(revealMenu:)];
+    
+    UIBarButtonItem *gridViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks 
+                                                                                           target:self 
+                                                                                           action:@selector(revealUnderRight:)];
+    
+    NSArray* segmentedControlOptions = [[NSArray alloc] initWithObjects:@"Map", @"Details", nil];
+   
+    segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentedControlOptions];
+    [segmentedControl addTarget:self action:@selector(tappedToggle:) forControlEvents:UIControlEventValueChanged];
+    [segmentedControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+    [segmentedControl setSelectedSegmentIndex:0];
+    
+    
+    
+    [self.navigationItem setLeftBarButtonItem:listViewBarButtonItem];
+    [self.navigationItem setTitleView:segmentedControl];
+    [self.navigationItem setRightBarButtonItem:gridViewBarButtonItem];
     
     [self loadMapView];
     
@@ -81,10 +96,12 @@
     [self setRightSliderImage:nil];
     [self setLeftSliderImage:nil];
     [self setMapView:nil];
-    [self setToggle:nil];
+    [self setSegmentedControl:nil];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PropertySelected" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ShowLeadForm" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"searchNearby" object:nil];
+   
     [self setMainViewContainer:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -132,18 +149,18 @@
 
 - (IBAction)revealMenu:(id)sender
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 - (void)revealMenuAndShowDetails
 {
-    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
+    self.viewDeckController.leftLedge = SET_RIGHT_ANCHOR_FOR_DETAILS;
     [self revealMenu:nil];
 }
 
 - (IBAction)revealUnderRight:(id)sender
 {
-    [self.slidingViewController anchorTopViewTo:ECLeft];
+    [self.viewDeckController toggleRightViewAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -166,21 +183,21 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPhone" bundle:nil];
-        underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController_iPhone" bundle:nil];
+        menuViewController = [[LeftViewController alloc] initWithNibName:@"LeftViewController_iPhone" bundle:nil];
+        underRightViewController = [[RightViewController alloc] initWithNibName:@"RightViewController_iPhone" bundle:nil];
     } else {
-        menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPad" bundle:nil];
-        underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightViewController_iPad" bundle:nil];
+        menuViewController = [[LeftViewController alloc] initWithNibName:@"LeftViewController_iPad" bundle:nil];
+        underRightViewController = [[RightViewController alloc] initWithNibName:@"RightViewController_iPad" bundle:nil];
     }
     
     menuViewController.menuDelegate = self;
     underRightViewController.menuDelegate = self;
     
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[LeftViewController class]]) {
         self.slidingViewController.underLeftViewController = menuViewController;
     }
     
-    if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
+    if (![self.slidingViewController.underRightViewController isKindOfClass:[RightViewController class]]) {
         self.slidingViewController.underRightViewController = underRightViewController;
     }
     
@@ -191,7 +208,7 @@
     [self setPinAtLocation:centerCoord onMap:mainMapViewController.mkMapView withDescription:description andAddress:address];
     [self setPinAtLocation:centerCoord onMap:detailsViewController.mapView withDescription:description andAddress:address];
     
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    //[self.view addGestureRecognizer:self.slidingViewController.panGesture];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -235,7 +252,7 @@
 }
 
 - (void)loadPropertyDetails:(NSNotification*)notification {
-    [toggle setSelectedSegmentIndex:1];
+    [segmentedControl setSelectedSegmentIndex:1];
     [self tappedToggle:nil];
 }
 
@@ -316,7 +333,7 @@
 - (IBAction)tappedToggle:(id)sender {
     BOOL detailsShown = NO;
     
-    if ([toggle selectedSegmentIndex] == 0) {
+    if ([segmentedControl selectedSegmentIndex] == 0) {
         [UIView animateWithDuration:0.25 animations:^{
             mainMapViewController.mkMapView.alpha = 1.0;
             detailsView.alpha = 0.0;

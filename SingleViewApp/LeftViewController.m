@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MenuViewController.h"
+#import "LeftViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
+#import "IIViewDeckController.h"
 
 #define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
 #define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
@@ -20,13 +21,13 @@
 #define GEORGIA_TECH_LONGITUDE -84.397348
 #define ZOOM_LEVEL 15
 
-@interface MenuViewController()
+@interface LeftViewController()
 @property (nonatomic, strong) NSArray *menuItems;
 - (void)showDetails;
 - (void)showLeadForm;
 @end
 
-@implementation MenuViewController
+@implementation LeftViewController
 @synthesize descTextView;
 @synthesize descTitleView;
 @synthesize propertyMap, detailsScrollView, detailsPhoto, menuItems, menuDelegate;
@@ -72,8 +73,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_LISTINGS];
-    self.slidingViewController.underLeftWidthLayout = ECFullWidth;
+//    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_LISTINGS];
+//    self.slidingViewController.underLeftWidthLayout = ECFullWidth;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
@@ -107,8 +108,8 @@
                 UIImage *propPhoto = [[UIImage alloc] initWithContentsOfFile:randomPath];
                 
                 cell.cellImageView.image = propPhoto;
-                [cell.cellImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
-                [cell.cellImageView.layer setBorderWidth: 6.0];
+//                [cell.cellImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+//                [cell.cellImageView.layer setBorderWidth: 6.0];
 //                [cell.cellImageView.layer setShadowColor:[UIColor blackColor].CGColor];
 //                [cell.cellImageView.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
 //                [cell.cellImageView.layer setShadowRadius:3.0];
@@ -135,19 +136,19 @@
 - (void)showDetails
 {
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        [self.slidingViewController resetTopView];
+        [self.viewDeckController showCenterView];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"PropertySelected" 
                                                             object:nil 
                                                           userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"detailsShown"]];
     } else {
-        [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
-        [self.slidingViewController anchorTopViewTo:ECRight];
+        self.viewDeckController.leftLedge = SET_RIGHT_ANCHOR_FOR_DETAILS;
+        [self.viewDeckController toggleLeftViewAnimated:YES];
         self.detailsScrollView.contentSize = CGSizeMake(350, 1000);
         [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS];
     }
     
-    [self.detailsPhoto.layer setBorderColor: [[UIColor whiteColor] CGColor]];
-    [self.detailsPhoto.layer setBorderWidth: 6.0];
+//    [self.detailsPhoto.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+//    [self.detailsPhoto.layer setBorderWidth: 6.0];
 //    [self.detailsPhoto.layer setShadowColor:[UIColor blackColor].CGColor];
 //    [self.detailsPhoto.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
 //    [self.detailsPhoto.layer setShadowRadius:3.0];
@@ -169,8 +170,8 @@
 
 - (void)showLeadForm
 {
-    [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_AVAILABILITY];
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    self.viewDeckController.leftLedge = SET_RIGHT_ANCHOR_FOR_AVAILABILITY;
+    [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 - (IBAction)checkAvailability:(id)sender {

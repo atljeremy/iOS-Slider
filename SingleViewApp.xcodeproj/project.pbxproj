@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0EAFBE1586088500124F8B /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0EAFBB1586088500124F8B /* IIViewDeckController.m */; };
+		1A0EAFBF1586088500124F8B /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0EAFBD1586088500124F8B /* WrapController.m */; };
 		1A1A5E8F158107C500E4546F /* PropertyLeadForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A5E8D158107C500E4546F /* PropertyLeadForm.xib */; };
-		1A228DA71577C19900A2652A /* UnderRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2DC1576B3610013DA35 /* UnderRightViewController.m */; };
+		1A228DA71577C19900A2652A /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2DC1576B3610013DA35 /* RightViewController.m */; };
 		1A46F0121579196B0036D4F9 /* map-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A46F0101579196B0036D4F9 /* map-pin.png */; };
 		1A46F0131579196B0036D4F9 /* map-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A46F0111579196B0036D4F9 /* map-pin@2x.png */; };
 		1A4756B51581362000FAE791 /* PropertyLeadFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4756B41581362000FAE791 /* PropertyLeadFormViewController.m */; };
@@ -63,9 +65,9 @@
 		1A72C2D11576AF900013DA35 /* FirstTopViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2CF1576AF900013DA35 /* FirstTopViewController_iPad.xib */; };
 		1A72C2D31576B13F0013DA35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A72C2D21576B13F0013DA35 /* MapKit.framework */; };
 		1A72C2D51576B1470013DA35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A72C2D41576B1470013DA35 /* QuartzCore.framework */; };
-		1A72C2D91576B2570013DA35 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2D71576B2570013DA35 /* MenuViewController.m */; };
-		1A72C2DA1576B2570013DA35 /* MenuViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2D81576B2570013DA35 /* MenuViewController_iPad.xib */; };
-		1A72C2DF1576B3620013DA35 /* UnderRightViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2DD1576B3620013DA35 /* UnderRightViewController_iPad.xib */; };
+		1A72C2D91576B2570013DA35 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2D71576B2570013DA35 /* LeftViewController.m */; };
+		1A72C2DA1576B2570013DA35 /* LeftViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2D81576B2570013DA35 /* LeftViewController_iPad.xib */; };
+		1A72C2DF1576B3620013DA35 /* RightViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2DD1576B3620013DA35 /* RightViewController_iPad.xib */; };
 		1A72C2E31576B5FB0013DA35 /* InitialSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2E11576B5FA0013DA35 /* InitialSlidingViewController.m */; };
 		1A72C2E41576B5FB0013DA35 /* InitialSlidingViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A72C2E21576B5FA0013DA35 /* InitialSlidingViewController_iPad.xib */; };
 		1A72C2E81576BA120013DA35 /* NavigationTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A72C2E61576BA110013DA35 /* NavigationTopViewController.m */; };
@@ -106,8 +108,8 @@
 		3F5C3AAD15784E5A00C0B420 /* UIColor+AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C3AA315784E5A00C0B420 /* UIColor+AQGridView.m */; };
 		3FAF919C157BB751001EFFBF /* FirstTopViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAF919B157BB751001EFFBF /* FirstTopViewController_iPhone.xib */; };
 		3FAF919E157BB7D9001EFFBF /* InitialSlidingViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAF919D157BB7D9001EFFBF /* InitialSlidingViewController_iPhone.xib */; };
-		3FAF91A0157BB808001EFFBF /* MenuViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAF919F157BB808001EFFBF /* MenuViewController_iPhone.xib */; };
-		3FAF91A2157BB81F001EFFBF /* UnderRightViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAF91A1157BB81F001EFFBF /* UnderRightViewController_iPhone.xib */; };
+		3FAF91A0157BB808001EFFBF /* LeftViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAF919F157BB808001EFFBF /* LeftViewController_iPhone.xib */; };
+		3FAF91A2157BB81F001EFFBF /* RightViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAF91A1157BB81F001EFFBF /* RightViewController_iPhone.xib */; };
 		3FFE765C157859360080B6B2 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE7658157859360080B6B2 /* star.png */; };
 		3FFE765F15785A1B0080B6B2 /* directions.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE765E15785A1B0080B6B2 /* directions.png */; };
 		3FFE766115785A640080B6B2 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE766015785A640080B6B2 /* email.png */; };
@@ -116,6 +118,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A0EAFBA1586088500124F8B /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		1A0EAFBB1586088500124F8B /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		1A0EAFBC1586088500124F8B /* WrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapController.h; sourceTree = "<group>"; };
+		1A0EAFBD1586088500124F8B /* WrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrapController.m; sourceTree = "<group>"; };
 		1A1A5E8D158107C500E4546F /* PropertyLeadForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyLeadForm.xib; sourceTree = "<group>"; };
 		1A46F0101579196B0036D4F9 /* map-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin.png"; sourceTree = "<group>"; };
 		1A46F0111579196B0036D4F9 /* map-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin@2x.png"; sourceTree = "<group>"; };
@@ -181,12 +187,12 @@
 		1A72C2CF1576AF900013DA35 /* FirstTopViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTopViewController_iPad.xib; sourceTree = "<group>"; };
 		1A72C2D21576B13F0013DA35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A72C2D41576B1470013DA35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		1A72C2D61576B2570013DA35 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		1A72C2D71576B2570013DA35 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		1A72C2D81576B2570013DA35 /* MenuViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController_iPad.xib; sourceTree = "<group>"; };
-		1A72C2DB1576B3610013DA35 /* UnderRightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderRightViewController.h; sourceTree = "<group>"; };
-		1A72C2DC1576B3610013DA35 /* UnderRightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderRightViewController.m; sourceTree = "<group>"; };
-		1A72C2DD1576B3620013DA35 /* UnderRightViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnderRightViewController_iPad.xib; sourceTree = "<group>"; };
+		1A72C2D61576B2570013DA35 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LeftViewController.h; sourceTree = "<group>"; };
+		1A72C2D71576B2570013DA35 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		1A72C2D81576B2570013DA35 /* LeftViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftViewController_iPad.xib; sourceTree = "<group>"; };
+		1A72C2DB1576B3610013DA35 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = RightViewController.h; sourceTree = "<group>"; };
+		1A72C2DC1576B3610013DA35 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
+		1A72C2DD1576B3620013DA35 /* RightViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController_iPad.xib; sourceTree = "<group>"; };
 		1A72C2E01576B5FA0013DA35 /* InitialSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSlidingViewController.h; sourceTree = "<group>"; };
 		1A72C2E11576B5FA0013DA35 /* InitialSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialSlidingViewController.m; sourceTree = "<group>"; };
 		1A72C2E21576B5FA0013DA35 /* InitialSlidingViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialSlidingViewController_iPad.xib; sourceTree = "<group>"; };
@@ -256,8 +262,8 @@
 		3F5C3AA315784E5A00C0B420 /* UIColor+AQGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+AQGridView.m"; path = "SingleViewApp/AQGridView/UIColor+AQGridView.m"; sourceTree = "<group>"; };
 		3FAF919B157BB751001EFFBF /* FirstTopViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTopViewController_iPhone.xib; sourceTree = "<group>"; };
 		3FAF919D157BB7D9001EFFBF /* InitialSlidingViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialSlidingViewController_iPhone.xib; sourceTree = "<group>"; };
-		3FAF919F157BB808001EFFBF /* MenuViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController_iPhone.xib; sourceTree = "<group>"; };
-		3FAF91A1157BB81F001EFFBF /* UnderRightViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnderRightViewController_iPhone.xib; sourceTree = "<group>"; };
+		3FAF919F157BB808001EFFBF /* LeftViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftViewController_iPhone.xib; sourceTree = "<group>"; };
+		3FAF91A1157BB81F001EFFBF /* RightViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController_iPhone.xib; sourceTree = "<group>"; };
 		3FFE7658157859360080B6B2 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		3FFE765E15785A1B0080B6B2 /* directions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directions.png; sourceTree = "<group>"; };
 		3FFE766015785A640080B6B2 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
@@ -282,6 +288,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0EAFB91586088500124F8B /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				1A0EAFBA1586088500124F8B /* IIViewDeckController.h */,
+				1A0EAFBB1586088500124F8B /* IIViewDeckController.m */,
+				1A0EAFBC1586088500124F8B /* WrapController.h */,
+				1A0EAFBD1586088500124F8B /* WrapController.m */,
+			);
+			name = ViewDeck;
+			path = SingleViewApp/ViewDeck;
+			sourceTree = "<group>";
+		};
 		1A13AD931577C7B000492345 /* GridView */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +435,7 @@
 		1A72C294157664360013DA35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A0EAFB91586088500124F8B /* ViewDeck */,
 				1A7B573B157CE9BD00D8A465 /* GCDiscreetNotificationView */,
 				3FFE7664157865C80080B6B2 /* CoreLocation.framework */,
 				3F5C3A591576F69B00C0B420 /* ECSlidingViewController */,
@@ -466,10 +485,10 @@
 				1A72C2AD157664360013DA35 /* ViewController_iPad.xib */,
 				1A72C2CD1576AF900013DA35 /* FirstTopViewController.h */,
 				1A72C2CE1576AF900013DA35 /* FirstTopViewController.m */,
-				1A72C2D61576B2570013DA35 /* MenuViewController.h */,
-				1A72C2D71576B2570013DA35 /* MenuViewController.m */,
-				1A72C2DB1576B3610013DA35 /* UnderRightViewController.h */,
-				1A72C2DC1576B3610013DA35 /* UnderRightViewController.m */,
+				1A72C2D61576B2570013DA35 /* LeftViewController.h */,
+				1A72C2D71576B2570013DA35 /* LeftViewController.m */,
+				1A72C2DB1576B3610013DA35 /* RightViewController.h */,
+				1A72C2DC1576B3610013DA35 /* RightViewController.m */,
 				1A72C2E01576B5FA0013DA35 /* InitialSlidingViewController.h */,
 				1A72C2E11576B5FA0013DA35 /* InitialSlidingViewController.m */,
 				1A72C2E51576BA110013DA35 /* NavigationTopViewController.h */,
@@ -508,8 +527,8 @@
 			isa = PBXGroup;
 			children = (
 				1A72C2CF1576AF900013DA35 /* FirstTopViewController_iPad.xib */,
-				1A72C2D81576B2570013DA35 /* MenuViewController_iPad.xib */,
-				1A72C2DD1576B3620013DA35 /* UnderRightViewController_iPad.xib */,
+				1A72C2D81576B2570013DA35 /* LeftViewController_iPad.xib */,
+				1A72C2DD1576B3620013DA35 /* RightViewController_iPad.xib */,
 				1A72C2E21576B5FA0013DA35 /* InitialSlidingViewController_iPad.xib */,
 				1A72C2E71576BA120013DA35 /* NavigationTopViewController_iPad.xib */,
 				1A72C2EC1576BD5E0013DA35 /* SecondTopViewController_iPad.xib */,
@@ -522,8 +541,8 @@
 			children = (
 				3FAF919B157BB751001EFFBF /* FirstTopViewController_iPhone.xib */,
 				3FAF919D157BB7D9001EFFBF /* InitialSlidingViewController_iPhone.xib */,
-				3FAF919F157BB808001EFFBF /* MenuViewController_iPhone.xib */,
-				3FAF91A1157BB81F001EFFBF /* UnderRightViewController_iPhone.xib */,
+				3FAF919F157BB808001EFFBF /* LeftViewController_iPhone.xib */,
+				3FAF91A1157BB81F001EFFBF /* RightViewController_iPhone.xib */,
 			);
 			name = "iPhone-xib";
 			sourceTree = "<group>";
@@ -605,8 +624,8 @@
 				1A72C2AC157664360013DA35 /* ViewController_iPhone.xib in Resources */,
 				1A72C2AF157664360013DA35 /* ViewController_iPad.xib in Resources */,
 				1A72C2D11576AF900013DA35 /* FirstTopViewController_iPad.xib in Resources */,
-				1A72C2DA1576B2570013DA35 /* MenuViewController_iPad.xib in Resources */,
-				1A72C2DF1576B3620013DA35 /* UnderRightViewController_iPad.xib in Resources */,
+				1A72C2DA1576B2570013DA35 /* LeftViewController_iPad.xib in Resources */,
+				1A72C2DF1576B3620013DA35 /* RightViewController_iPad.xib in Resources */,
 				1A72C2E41576B5FB0013DA35 /* InitialSlidingViewController_iPad.xib in Resources */,
 				1A72C2E91576BA120013DA35 /* NavigationTopViewController_iPad.xib in Resources */,
 				1A72C2EE1576BD5F0013DA35 /* SecondTopViewController_iPad.xib in Resources */,
@@ -653,8 +672,8 @@
 				1A56028315793FCF007A9C11 /* apartment_asdf.png in Resources */,
 				3FAF919C157BB751001EFFBF /* FirstTopViewController_iPhone.xib in Resources */,
 				3FAF919E157BB7D9001EFFBF /* InitialSlidingViewController_iPhone.xib in Resources */,
-				3FAF91A0157BB808001EFFBF /* MenuViewController_iPhone.xib in Resources */,
-				3FAF91A2157BB81F001EFFBF /* UnderRightViewController_iPhone.xib in Resources */,
+				3FAF91A0157BB808001EFFBF /* LeftViewController_iPhone.xib in Resources */,
+				3FAF91A2157BB81F001EFFBF /* RightViewController_iPhone.xib in Resources */,
 				1ABA08ED157D3C2700D4C22B /* MainMapViewController.xib in Resources */,
 				1A63CAA8157D548400E8F82D /* PropertyDetailsViewController.xib in Resources */,
 				1A1A5E8F158107C500E4546F /* PropertyLeadForm.xib in Resources */,
@@ -677,12 +696,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A228DA71577C19900A2652A /* UnderRightViewController.m in Sources */,
+				1A228DA71577C19900A2652A /* RightViewController.m in Sources */,
 				1A72C2A2157664360013DA35 /* main.m in Sources */,
 				1A72C2A6157664360013DA35 /* AppDelegate.m in Sources */,
 				1A72C2A9157664360013DA35 /* ViewController.m in Sources */,
 				1A72C2D01576AF900013DA35 /* FirstTopViewController.m in Sources */,
-				1A72C2D91576B2570013DA35 /* MenuViewController.m in Sources */,
+				1A72C2D91576B2570013DA35 /* LeftViewController.m in Sources */,
 				1A72C2E31576B5FB0013DA35 /* InitialSlidingViewController.m in Sources */,
 				1A72C2E81576BA120013DA35 /* NavigationTopViewController.m in Sources */,
 				1A72C2ED1576BD5F0013DA35 /* SecondTopViewController.m in Sources */,
@@ -711,6 +730,8 @@
 				1A63CAA7157D548400E8F82D /* PropertyDetailsViewController.m in Sources */,
 				1A4756B51581362000FAE791 /* PropertyLeadFormViewController.m in Sources */,
 				1AFFBA08158141CE00664369 /* PropertyLeadThankYouViewController.m in Sources */,
+				1A0EAFBE1586088500124F8B /* IIViewDeckController.m in Sources */,
+				1A0EAFBF1586088500124F8B /* WrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

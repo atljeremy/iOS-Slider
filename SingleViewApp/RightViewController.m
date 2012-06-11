@@ -6,12 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "UnderRightViewController.h"
+#import "RightViewController.h"
 #import "ImageDemoGridViewCell.h"
 #import "ImageDemoFilledCell.h"
 #import "PropertyLeadFormViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
+#import "IIViewDeckController.h"
 
 enum
 {
@@ -25,13 +26,13 @@ enum
 #define GEORGIA_TECH_LATITUDE 33.777328
 #define GEORGIA_TECH_LONGITUDE -84.397348
 
-@interface UnderRightViewController()
+@interface RightViewController()
 @property (nonatomic, unsafe_unretained) CGFloat peekLeftAmount;
 
 - (void)showDetails;
 @end
 
-@implementation UnderRightViewController
+@implementation RightViewController
 @synthesize leadFormController;
 @synthesize peekLeftAmount;
 @synthesize gridView=_gridView;
@@ -95,8 +96,8 @@ enum
     self.leadFormTitle.alpha = 0.0f;
     
     self.peekLeftAmount = 50.0f;
-    [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
-    self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
+    self.viewDeckController.rightLedge = self.peekLeftAmount;
+    //self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
     
     // Grid view
     self.gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
@@ -351,13 +352,13 @@ enum
 - (void)showDetails
 {
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        [self.slidingViewController resetTopView];
+        [self.viewDeckController showCenterView:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"PropertySelected" 
                                                             object:nil 
                                                           userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"detailsShown"]];
     } else {
-        [self.slidingViewController setAnchorRightRevealAmount:SET_RIGHT_ANCHOR_FOR_DETAILS];
-        [self.slidingViewController anchorTopViewTo:ECRight];
+        self.viewDeckController.leftLedge = SET_RIGHT_ANCHOR_FOR_DETAILS;
+        [self.viewDeckController toggleLeftViewAnimated:YES];
         self.detailsScrollView.contentSize = CGSizeMake(350, 1000);
         [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS];
     }

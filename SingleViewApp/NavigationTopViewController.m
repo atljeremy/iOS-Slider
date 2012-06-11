@@ -59,14 +59,14 @@
 {
     [super viewWillAppear:animated];
     
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[LeftViewController class]]) {
         //    self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        self.slidingViewController.underLeftViewController = [[MenuViewController alloc] initWithNibName:@"MenuView" bundle:nil];
+        self.slidingViewController.underLeftViewController = [[LeftViewController alloc] initWithNibName:@"MenuView" bundle:nil];
     }
     
-    if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
+    if (![self.slidingViewController.underRightViewController isKindOfClass:[RightViewController class]]) {
         //    self.slidingViewController.underRightViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRight"];
-        self.slidingViewController.underRightViewController = [[UnderRightViewController alloc] initWithNibName:@"UnderRightView" bundle:nil];
+        self.slidingViewController.underRightViewController = [[RightViewController alloc] initWithNibName:@"UnderRightView" bundle:nil];
     }
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];

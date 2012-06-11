@@ -99,7 +99,7 @@ NSString *const ECSlidingViewTopDidReset          = @"ECSlidingViewTopDidReset";
   _topViewController = theTopViewController;
   
   [self addChildViewController:self.topViewController];
-  [self.topViewController didMoveToParentViewController:self];
+//  [self.topViewController didMoveToParentViewController:self];
   
   [_topViewController.view setAutoresizingMask:self.autoResizeToFillScreen];
   [_topViewController.view setFrame:self.view.bounds];
@@ -119,7 +119,7 @@ NSString *const ECSlidingViewTopDidReset          = @"ECSlidingViewTopDidReset";
   
   if (_underLeftViewController) {
     [self addChildViewController:self.underLeftViewController];
-    [self.underLeftViewController didMoveToParentViewController:self];
+//    [self.underLeftViewController didMoveToParentViewController:self];
     
     [self updateUnderLeftLayout];
     
@@ -137,7 +137,7 @@ NSString *const ECSlidingViewTopDidReset          = @"ECSlidingViewTopDidReset";
   
   if (_underRightViewController) {
     [self addChildViewController:self.underRightViewController];
-    [self.underRightViewController didMoveToParentViewController:self];
+//    [self.underRightViewController didMoveToParentViewController:self];
     
     [self updateUnderRightLayout];
     

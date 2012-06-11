@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
-#import "ECSlidingViewController.h"
-#import "MenuViewController.h"
+//#import "ECSlidingViewController.h"
+#import "LeftViewController.h"
 #import "MenuViewControllerDelegate.h"
-#import "UnderRightViewController.h"
+#import "RightViewController.h"
 #import "GCDiscreetNotificationView.h"
 #import "DiscreteNotifications.h"
 
@@ -28,18 +28,18 @@
 - (IBAction)revealUnderRight:(id)sender;
 - (IBAction)tappedToggle:(id)sender;
 - (void)performNearbySearch;
+- (void)loadMapView;
 
-@property (nonatomic, strong) MenuViewController *menuViewController;
-@property (nonatomic, strong) UnderRightViewController *underRightViewController;
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rightSliderImage;
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *leftSliderImage;
-@property (unsafe_unretained, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) LeftViewController *menuViewController;
+@property (nonatomic, strong) RightViewController *underRightViewController;
+@property (assign, nonatomic) IBOutlet UIImageView *rightSliderImage;
+@property (assign, nonatomic) IBOutlet UIImageView *leftSliderImage;
+@property (assign, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) UIView *detailsView;
 @property (nonatomic, strong) PropertyDetailsViewController *detailsViewController;
 @property (nonatomic, strong) MainMapViewController *mainMapViewController;
 @property (nonatomic, strong) GCDiscreetNotificationView *notificationView;
-@property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *toggle;
-@property (unsafe_unretained, nonatomic) IBOutlet UIView *mainViewContainer;
-
+@property (retain, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (assign, nonatomic) IBOutlet UIView *mainViewContainer;
 
 @end

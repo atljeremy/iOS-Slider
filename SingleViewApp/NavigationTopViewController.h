@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
-#import "MenuViewController.h"
-#import "UnderRightViewController.h"
+#import "LeftViewController.h"
+#import "RightViewController.h"
 
 @interface NavigationTopViewController : UINavigationController
 

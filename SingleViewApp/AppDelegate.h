@@ -7,20 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
-#import "InitialSlidingViewController.h"
+//#import "ECSlidingViewController.h"
+//#import "InitialSlidingViewController.h"
 
 @class ViewController;
-@class FirstTopViewController;
+//@class FirstTopViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ViewController *viewController;
+//@property (strong, nonatomic) ViewController *viewController;
+//@property (strong, nonatomic) FirstTopViewController *firstTopViewController;
+//@property (strong, nonatomic) InitialSlidingViewController *slidingViewController;
 
-@property (strong, nonatomic) FirstTopViewController *firstTopViewController;
-
-@property (strong, nonatomic) InitialSlidingViewController *slidingViewController;
+@property (retain, nonatomic) UIViewController *centerController;
+@property (retain, nonatomic) UIViewController *leftController;
+@property (retain, nonatomic) UIViewController *imageController;
 
 @end

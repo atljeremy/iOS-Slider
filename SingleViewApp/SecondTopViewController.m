@@ -58,9 +58,9 @@
 {
     [super viewWillAppear:animated];
     
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[LeftViewController class]]) {
         //self.slidingViewController.underLeftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        self.slidingViewController.underLeftViewController = [[MenuViewController alloc] initWithNibName:@"MenuView" bundle:nil];
+        self.slidingViewController.underLeftViewController = [[LeftViewController alloc] initWithNibName:@"MenuView" bundle:nil];
     }
     self.slidingViewController.underRightViewController = nil;
     self.slidingViewController.anchorLeftPeekAmount     = 0;
