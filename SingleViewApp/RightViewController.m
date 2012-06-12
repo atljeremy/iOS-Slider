@@ -363,14 +363,14 @@ enum
         [menuDelegate updateMapViewWidthTo:SET_MAPVIEW_WIDTH_FOR_PROPERTY_DETAILS];
     }
     
-    CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
+//    CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
     
-    CLLocationCoordinate2D propertyCoordinate = CLLocationCoordinate2DMake(GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE);
+//    CLLocationCoordinate2D propertyCoordinate = CLLocationCoordinate2DMake(GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE);
+//    
+//    NSString * description = @"Description";
+//    NSString * address = @"Address";
     
-    NSString * description = @"Description";
-    NSString * address = @"Address";
-    
-    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:propertyCoordinate];
+//    MyLocation *annotation = [[MyLocation alloc] initWithName:description address:address coordinate:propertyCoordinate];
 }
 
 @end

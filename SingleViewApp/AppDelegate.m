@@ -8,39 +8,21 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
 #import "IIViewDeckController.h"
 #import "LeftViewController.h"
 #import "RightViewController.h"
-#import "FirstTopViewController.h"
-
-//#import "FirstTopViewController.h"
+#import "MainViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
-//@synthesize viewController = _viewController;
-//@synthesize firstTopViewController = _firstTopViewController;
-//@synthesize slidingViewController = _slidingViewController;
+
 @synthesize centerController = _viewController;
 @synthesize leftController = _leftController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//        self.slidingViewController = [[InitialSlidingViewController alloc] initWithNibName:@"InitialSlidingViewController_iPhone" bundle:nil];
-//        self.firstTopViewController = [[FirstTopViewController alloc] initWithNibName:@"FirstTopViewController_iPhone" bundle:nil];
-//        self.slidingViewController.topViewController = self.firstTopViewController;
-//        self.window.rootViewController = self.slidingViewController;
-//    } else {
-//        self.slidingViewController = [[InitialSlidingViewController alloc] initWithNibName:@"InitialSlidingViewController_iPad" bundle:nil];
-//        self.firstTopViewController = [[FirstTopViewController alloc] initWithNibName:@"FirstTopViewController_iPad" bundle:nil];
-//        self.slidingViewController.topViewController = self.firstTopViewController;
-//        self.window.rootViewController = self.slidingViewController;
-//    }
-    
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         
@@ -50,8 +32,9 @@
         self.leftController = [[LeftViewController alloc] initWithNibName:@"LeftViewController_iPhone" bundle:nil];
         RightViewController* rightController = [[RightViewController alloc] initWithNibName:@"RightViewController_iPhone" bundle:nil];
         
-        FirstTopViewController *centerController = [[FirstTopViewController alloc] initWithNibName:@"FirstTopViewController_iPhone" bundle:nil];
+        MainViewController *centerController = [[MainViewController alloc] initWithNibName:@"MainViewController_iPhone" bundle:nil];
         self.centerController = [[UINavigationController alloc] initWithRootViewController:centerController];
+        
         IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:self.centerController 
                                                                                         leftViewController:self.leftController
                                                                                        rightViewController:rightController];
@@ -67,8 +50,9 @@
         self.leftController = [[LeftViewController alloc] initWithNibName:@"LeftViewController" bundle:nil];
         RightViewController* rightController = [[RightViewController alloc] initWithNibName:@"RightViewController" bundle:nil];
         
-        ViewController *centerController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+        MainViewController *centerController = [[MainViewController alloc] initWithNibName:@"MainViewController_iPad" bundle:nil];
         self.centerController = [[UINavigationController alloc] initWithRootViewController:centerController];
+        
         IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:self.centerController 
                                                                                         leftViewController:self.leftController
                                                                                        rightViewController:rightController];

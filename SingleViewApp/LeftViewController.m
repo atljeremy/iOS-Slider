@@ -10,6 +10,7 @@
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
 #import "IIViewDeckController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define SET_RIGHT_ANCHOR_FOR_LISTINGS 300.0f
 #define SET_RIGHT_ANCHOR_FOR_DETAILS 650.0f
@@ -108,12 +109,8 @@
                 UIImage *propPhoto = [[UIImage alloc] initWithContentsOfFile:randomPath];
                 
                 cell.cellImageView.image = propPhoto;
-//                [cell.cellImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
-//                [cell.cellImageView.layer setBorderWidth: 6.0];
-//                [cell.cellImageView.layer setShadowColor:[UIColor blackColor].CGColor];
-//                [cell.cellImageView.layer setShadowOffset:CGSizeMake(-6.0, 5.0)];
-//                [cell.cellImageView.layer setShadowRadius:3.0];
-                
+                [cell.cellImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+                [cell.cellImageView.layer setBorderWidth: 6.0];
                 
                 break;
             }

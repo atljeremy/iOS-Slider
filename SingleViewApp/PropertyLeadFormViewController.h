@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PRMViewController.h"
 
-@interface PropertyLeadFormViewController : UIViewController
+@interface PropertyLeadFormViewController : PRMViewController
+
 - (IBAction)submitLead:(id)sender;
 
 @end

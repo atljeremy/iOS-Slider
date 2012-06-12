@@ -1,12 +1,12 @@
 //
-//  FirstTopViewController.m
+//  MainViewController.m
 //  SingleViewApp
 //
 //  Created by Jeremy Fox on 5/30/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "FirstTopViewController.h"
+#import "MainViewController.h"
 #import "LeftViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "MyLocation.h"
@@ -22,7 +22,7 @@
 #define ZOOM_LEVEL 14
 #define ZOOM_LEVEL_MULTI 16
 
-@implementation FirstTopViewController
+@implementation MainViewController
 @synthesize mainViewContainer;
 @synthesize rightSliderImage;
 @synthesize leftSliderImage;
@@ -192,14 +192,6 @@
     
     menuViewController.menuDelegate = self;
     underRightViewController.menuDelegate = self;
-    
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[LeftViewController class]]) {
-        self.slidingViewController.underLeftViewController = menuViewController;
-    }
-    
-    if (![self.slidingViewController.underRightViewController isKindOfClass:[RightViewController class]]) {
-        self.slidingViewController.underRightViewController = underRightViewController;
-    }
     
     CLLocationCoordinate2D centerCoord = { GEORGIA_TECH_LATITUDE, GEORGIA_TECH_LONGITUDE };
     NSString * description = @"Description";

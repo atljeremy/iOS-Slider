@@ -1,32 +1,24 @@
 //
-//  UIImageViewBorder.m
+//  UIImageView+Border.m
 //  SingleViewApp
 //
-//  Created by Jeremy Fox on 5/30/12.
+//  Created by Jeremy Fox on 6/12/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIImageViewBorder.h"
+#import "UIImageView+Border.h"
 #import "QuartzCore/QuartzCore.h"
 
-@interface UIImageView (private)
--(UIImage*)rescaleImage:(UIImage*)image;
--(void)configureImageViewBorder:(CGFloat)borderWidth;
-@end
 
-@implementation UIImageView (ImageViewBorder)
-
--(void)setImage:(UIImage*)image withBorderWidth:(CGFloat)borderWidth
-{
-    [self configureImageViewBorder:borderWidth];
-    UIImage* scaledImage = [self rescaleImage:image];
-    self.image = scaledImage;
-}
+@implementation UIImageView (Border)
 
 -(void)configureImageViewBorder:(CGFloat)borderWidth{
+    
     CALayer* layer = [self layer];
     [layer setBorderWidth:borderWidth];
+    
     [self setContentMode:UIViewContentModeCenter];
+    
     [layer setBorderColor:[UIColor whiteColor].CGColor];
     [layer setShadowOffset:CGSizeMake(-3.0, 3.0)];
     [layer setShadowRadius:3.0];
@@ -34,6 +26,7 @@
 }
 
 -(UIImage*)rescaleImage:(UIImage*)image{
+    
     UIImage* scaledImage = image;
     
     CALayer* layer = self.layer;
@@ -54,6 +47,14 @@
         }        
     }
     return scaledImage;
+}
+
+-(void)setImage:(UIImage*)image withBorderWidth:(CGFloat)borderWidth{
+    
+    [self configureImageViewBorder:borderWidth];
+    
+    UIImage* scaledImage = [self rescaleImage:image];
+    self.image = scaledImage;
 }
 
 @end

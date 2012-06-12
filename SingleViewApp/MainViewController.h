@@ -1,5 +1,5 @@
 //
-//  FirstTopViewController.h
+//  MainViewController.h
 //  SingleViewApp
 //
 //  Created by Jeremy Fox on 5/30/12.
@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
-//#import "ECSlidingViewController.h"
+
+#import "PRMViewController.h"
 #import "LeftViewController.h"
 #import "MenuViewControllerDelegate.h"
 #import "RightViewController.h"
@@ -20,7 +21,7 @@
 #import "PropertyDetailsViewController.h"
 #import "MainMapViewController.h"
 
-@interface FirstTopViewController : UIViewController <MenuViewControllerDelegate, MKMapViewDelegate, DiscreetNotifications>
+@interface MainViewController : PRMViewController <MenuViewControllerDelegate, MKMapViewDelegate, DiscreetNotifications>
 
 - (void)setPinAtLocation:(CLLocationCoordinate2D)location onMap:(MKMapView *)mapView withDescription:(NSString *)desc andAddress:(NSString *)address;
 - (IBAction)revealMenu:(id)sender;

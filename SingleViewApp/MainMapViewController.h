@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "PRMViewController.h"
 
-@interface MainMapViewController : UIViewController <MKMapViewDelegate>
+@interface MainMapViewController : PRMViewController <MKMapViewDelegate>
 
 @property (nonatomic, retain) IBOutlet MKMapView *mkMapView;
-@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 
 - (IBAction)nearbySearch:(id)sender;
 - (IBAction)entrySearch:(id)sender;

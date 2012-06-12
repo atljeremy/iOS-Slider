@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "PRMViewController.h"
 #import "ListingTableViewCell.h"
 #import "MenuViewControllerDelegate.h"
 
 //#import "ECSlidingViewController.h"
 
-@interface LeftViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, MKMapViewDelegate>
+@interface LeftViewController : PRMViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, MKMapViewDelegate>
 
 @property (assign) id<MenuViewControllerDelegate> menuDelegate;
 @property (unsafe_unretained, nonatomic) IBOutlet UIScrollView *detailsScrollView;
